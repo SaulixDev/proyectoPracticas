@@ -1,10 +1,27 @@
 <template>
   <div>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-      Consectetur corporis ipsum quaerat eligendi rem dolor accusamus.
-      Consectetur ex debitis dolores dignissimos quia at soluta hic corporis.
-      Recusandae voluptatibus obcaecati sit?
-    </p>
+    <div>
+      <div>
+        <div>
+          <img src="" alt="">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Consectetur corporis ipsum quaerat eligendi rem dolor accusamus.
+            Consectetur ex debitis dolores dignissimos quia at soluta hic corporis.
+            Recusandae voluptatibus obcaecati sit?
+          </p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="" alt="">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Consectetur corporis ipsum quaerat eligendi rem dolor accusamus.
+            Consectetur ex debitis dolores dignissimos quia at soluta hic corporis.
+            Recusandae voluptatibus obcaecati sit?
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,10 +30,10 @@
 </script>
 
 <style scoped>
-  div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-  }
+}
 </style>
