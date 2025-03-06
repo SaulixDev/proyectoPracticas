@@ -19,11 +19,6 @@ import Home from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
-header {
-  /* line-height: 1.5;
-  max-height: 100vh; */
-}
-
 nav {
   width: 100%;
   font-size: 25px;
