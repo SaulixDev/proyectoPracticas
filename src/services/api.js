@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const apiMeal = axios.create({
-    baseUrl: 'https://www.themealbd.com/api/json/v1/1'
+export const apiMeal = axios.create({
+    baseURL: 'https://www.themealdb.com/api/json/v1/1'
 })
 
 
