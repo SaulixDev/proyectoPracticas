@@ -17,6 +17,22 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/CocktailsView.vue'),
     },
+    {
+      path: '/Deserts',
+      name: 'deserts',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/DesertView.vue'),
+    },
+    {
+      path: '/Menus',
+      name: 'menu',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/MenuView.vue'),
+    },
   ],
 })
 
