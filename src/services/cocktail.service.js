@@ -91,6 +91,7 @@ export async function getCategorieOrdinary() {
 export async function getCategorie(name) {
   try {
     const response = await apiCocktails.get(`filter.php?c=${name}`);
+    return response.data.drinks
   } catch (error) {
     console.log("Error no se pudo recoger el cocktail", error);
     return error;
@@ -121,7 +122,7 @@ export async function getVasoChampagne() {
 export async function getAllCategoria() {
   try {
     let response = await apiCocktails.get(`/list.php?c=list`);
-    return response.drinks;
+    return response.data.drinks;
   } catch (error) {
     console.log("Error a obtener la lista", error);
     return error;
