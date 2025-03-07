@@ -16,6 +16,8 @@
         </span>
     </div>
 
+    <hr/>
+
     <section>
         <li v-for="(cocktail, i) in cocktailList" :key="i">
             <h2>{{ cocktail.strDrink }}</h2>
@@ -75,8 +77,8 @@ const getInfo = async (id) => {
 
 <style scoped>
 
-    .searchPart{
-        background-color: aqua;
+    li{
+        list-style: none;
     }
 
 </style>
