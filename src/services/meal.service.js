@@ -41,3 +41,33 @@ export async function getMealFromCategorie(categorie){
         return [];
     }
 }
+
+export async function getListCategories(){
+    try{
+        let response = await apiMeal.get(`/list.php?c=list`)
+        return response.data.meals
+    }catch(error){
+        console.error("Error al obtener la comida: ", error)
+        return [];
+    }
+}
+
+export async function getListArea(){
+    try{
+        let response = await apiMeal.get(`/list.php?a=list`)
+        return response.data.meals
+    }catch(error){
+        console.error("Error al obtener la comida: ", error)
+        return [];
+    }
+}
+
+export async function getListIngredients(){
+    try{
+        let response = await apiMeal.get(`/list.php?i=list`)
+        return response.data.meals
+    }catch(error){
+        console.error("Error al obtener la comida: ", error)
+        return [];
+    }
+}
