@@ -4,7 +4,7 @@ import { apiCocktails } from "./api";
 export async function getCocktailByName(name){
     try{
         const response = await apiCocktails.get(`/search.php?s=${name}`)
-        return response.data
+        return response.data.drinks
     }catch(error){
         console.log("Error no se ha podido recoger el Cocktel", error)
         return error;
@@ -38,6 +38,7 @@ export async function getListByLetter(letter){
 export async function getIngredientsByName(name){
     try{
         const response = await apiCocktails.get(`/search.php?i=${name}`)
+        return response.data.ingredients
     }catch(error){
         console.log("Error no se pudo recoger el cocktaikl", error)
         return error;
