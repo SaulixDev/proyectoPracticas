@@ -48,7 +48,7 @@ export async function getIngredientsByName(name){
 export async function getInfoById(id){
     try{
         const response = await apiCocktails.get(`/lookup.php?i=${id}`)
-        return response.data.ingredients
+        return response.data.drinks
     }catch(error){
         console.log("Error no se pudo recoger el cocktaikl", error)
         return error;
