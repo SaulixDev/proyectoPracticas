@@ -14,20 +14,27 @@
             <h2>¿Necesitas probar algo nuevo?</h2>
             <button @click="() => verCocktailAleatorio()">Ver Cocktel aleatorio</button>
         </span>
+
+        <span class="flex-1">
+            <button @click="() => getDrinkAlcoholic()">Bebidas alcohólicas</button>
+            <button @click="() => getDrinkNonAlcoholic()">Bebidas no alcohólicas</button>
+        </span>
     </div>
 
     <hr/>
 
     <section>
+
         <li v-for="(cocktail, i) in cocktailList" :key="i">
-            <h2>{{ cocktail.strDrink }}</h2>
-            {{ cocktail.idDrink }}
+            <h1>{{ cocktail.strDrink }} - Id: {{ cocktail.idDrink }}</h1>
             <img v-if="cocktail.strDrinkThumb" :src="cocktail.strDrinkThumb" alt=""/>
-            <button @click="visible()">More info</button>
+            <button @click="visible(cocktail.idDrink)">More info</button>
             <div v-if="isVisible">
-                <p>Category: {{ cocktail.strCategory }}</p>
-                <p>Type: {{ cocktail.strAlcoholic }}</p>
-                <p>Instructions: {{ cocktail.strInstructions }}</p>
+                <li v-for="(data, j) in cocktailData" :key="j">
+                    <p>Category: {{ data.strCategory }}</p>
+                    <p>Type: {{ data.strAlcoholic }}</p>
+                    <p>Instructions: {{ data.strInstructions }}</p>
+                </li>
             </div> 
         </li>
     </section>
@@ -36,15 +43,15 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { getCocktailByName, getInfoById, getIngredientsByName, getListByLetter, getRandomCocktail } from "@/services/cocktail.service";
+import { getCocktailByName, getAlcoholic, getNonAlcoholic, getRandomCocktail, getInfoById } from "@/services/cocktail.service";
 
 const cocktailList = ref([]);
-const cocktailData = ref([]);
-const cocktailIng = ref([])
+const cocktailData = ref([])
 const isVisible = ref(false);
 
-function visible (){
+function visible (id){
     isVisible.value = !isVisible.value
+    getDrinkFromId(id)
 }
 
 const verCocktailAleatorio = async () =>{
@@ -52,24 +59,25 @@ const verCocktailAleatorio = async () =>{
    console.log(cocktailList.value)
 }
 
-const seatchByLetter = async (letter) => {
-    cocktailList.value = await getListByLetter(letter)
+const getDrinkAlcoholic = async () => {
+    cocktailList.value = await getAlcoholic();
     console.log(cocktailList.value)
 }
 
-const searchIngredientsByName = async (name) => {
-    cocktailIng.value = await getIngredientsByName(name)
-    console.log(cocktailIng.value)
+const getDrinkNonAlcoholic = async () => {
+    cocktailList.value = await getNonAlcoholic();
+    console.log(cocktailList.value)
+}
+
+const getDrinkFromId = async (id) => {
+    cocktailData.value = await getInfoById(id);
+    console.log(cocktailData.value)
+    
 }
  
 const searchCocktailByName = async (name) => {
     cocktailList.value = await getCocktailByName(name);
     console.log(cocktailList.value)
-}
-
-const getInfo = async (id) => {
-    cocktailData.value = await getInfoById(id)
-    console.log(cocktailData.value)
 }
 
 
