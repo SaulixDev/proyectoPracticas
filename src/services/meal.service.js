@@ -3,7 +3,7 @@ import { apiMeal } from "./api";
 export async function getMealFromId(id){
     try{
         const response = await apiMeal.get(`/lookup.php?i=${id}`)
-        return response.data
+        return response.data.meals
     }catch(error){
         console.error("Error al obtener la comida: ", error)
         return [];
@@ -24,7 +24,7 @@ export async function getAllCategories(){
 export async function getRandomMeal(){
     try{
         let response = await apiMeal.get(`/random.php`)
-        return response.data
+        return response.data.meals
     }catch(error){
         console.error("Error al obtener la comida: ", error)
         return [];
