@@ -1,60 +1,74 @@
 <template>
+  <div class="bg-bg-100 text-text-100">
+    <button @click="() =>getAllCat()">Mostrar categorias</button>
+    <button @click="() => getRandomMea()">Plato aleatorio</button>
     <div>
-        <li v-for="(cat, i) in categories" :key="i">
-            {{ cat.strCategory }}
-        </li>
-        <input
-            type="text"
-            v-model="searchId"
-            placeholder="Ingrese id"
-        />
-        <button @click="searchForMeal(searchId)">Buscar</button>
-
-        <input
-            type="text"
-            v-model="searchCat"
-            placeholder="Ingrese categoria"
-        />
-        <button @click="searchForCategorie(searchCat)">Buscar</button>
-
-        <li v-for="(meal, i) in meals" :key="i">
-            {{ meal.strMeal }}
-            <button @click="">More Info</button>
-        </li>
+        <li v-for="(category, i) in categories" @click="() => searchForCategorie(category.strCategory)">
+            {{ category.strCategory }}></li>
+            
     </div>
+    <div>
+
+      <li v-for="(meal, i) in meals">
+        {{ meal.strMeal }}
+        <img v-if="meal.strMealThumb" :src="meal.strMealThumb" alt="" />
+        <button @click="() => searchForMeal(meal.idMeal)">More Info</button>
+        <MenuInfo :id="meal.idMeal"/>
+       
+      </li>
+    </div>
+  </div>
 </template>
 
 <script setup>
-    
-    import { getAllCategories, getMealFromCategorie, getMealFromId } from '@/services/meal.service';
-    import { onMounted, ref } from 'vue'; 
+import MenuInfo from "@/components/menuInfo.vue";
+import {
+  getAllCategories,
+  getMealFromCategorie,
+  getMealFromId,
+  getRandomMeal,
+  getListArea,
+  getListIngredients,
+} from "@/services/meal.service";
+import { useMenuStore } from "@/stores/menuStores";
+import { ref } from "vue";
+const store = useMenuStore()
+const meals = ref([]);
+const categories = ref([]);
+const ingredients = ref([]);
+const zone = ref([]);
+const { setMenu } = store
 
-    const meals = ref({})
-    const categories = ref({})
-    
-
-    async function searchForMeal(id){
+async function searchForMeal(id){
+        meals.value=[]
+        categories.value=[]
         meals.value  = await getMealFromId(id)
+        setMenu(meals.value)
         console.log(meals.value)
     }
 
-    async function searchForCategorie(categorie){
-        meals.value = await getMealFromCategorie(categorie)
-        console.log(meals.value)
-    }
+async function searchForCategorie(categorie) {
+    meals.value=[]
+    categories.value=[]
+    meals.value = await getMealFromCategorie(categorie);
+  console.log(meals.value);
+}
 
-    async function getAllCat(){
-        categories.value = await getAllCategories()
+async function getAllCat(){
+    meals.value=[]    
+    categories.value=[]
+    categories.value = await getAllCategories()
         console.log(categories)
     }
 
-    onMounted(() => {
-        getAllCat();
-        console.log('pipipi', categories)
-    })
+async function getRandomMea() {
+    meals.value=[]
+    categories.value=[]
+    meals.value = await getRandomMeal();
+  console.log(meals.value);
+}
+
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
