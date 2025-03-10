@@ -71,3 +71,13 @@ export async function getListIngredients(){
         return [];
     }
 }
+
+export async function getMealFromIngredient(ingredient){
+    try{
+        let response = await apiMeal.get(`/filter.php?i=${ingredient}`)
+        return response.data.meals
+    }catch(error){
+        console.error("Error al obtener la comida: ", error)
+        return [];
+    }
+}
