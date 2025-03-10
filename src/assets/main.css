@@ -1,49 +1,19 @@
 @import "tailwindcss";
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-}
+@tailwind utilities;
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
+@theme{
+  --color-bg300: #c2c2aa;
+  --color-bg200: #ebebd2;
+  --color-bg100: #F5F5DC;
+  --color-primary100: #D2B48C;
+  --color-primary200: #b49770;
+  --color-primary300: #705834;
+  --color-accent100: #FFE4C4;
+  --color-accent200: #9a8366;
+  --color-text100: #483C32;
+  --color-text200: #74665b;
+  
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
-
-:root {
-  --primary-100: #D2B48C;
-  --primary-200: #b49770;
-  --primary-300: #705834;
-  --accent-100: #FFE4C4;
-  --accent-200: #9a8366;
-  --text-100: #483C32;
-  --text-200: #74665b;
-  --bg-100: #F5F5DC;
-  --bg-200: #ebebd2;
-  --bg-300: #c2c2aa;
 }
