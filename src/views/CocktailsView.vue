@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div class="primary-100 sticky top-0 drinknav">
+        <div class="bg-primary sticky top-0 ">
             <div class="flex justify-evenly">
                 <span>
                     <h2>Buscar por nombre</h2>
