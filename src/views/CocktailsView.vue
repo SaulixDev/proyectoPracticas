@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div class="sticky top-0 drinknav">
+        <div class="primary-100 sticky top-0 drinknav">
             <div class="flex justify-evenly">
                 <span>
                     <h2>Buscar por nombre</h2>
@@ -36,7 +36,7 @@
             <li v-for="(cocktail, i) in cocktailList" :key="i">
                 <div class="flex drink-container">
                     <div class="flex-1">
-                        <img v-if="cocktail.strDrinkThumb" :src="cocktail.strDrinkThumb" alt=""/>
+                        <img class="w-96 object-contain" v-if="cocktail.strDrinkThumb" :src="cocktail.strDrinkThumb" alt=""/>
                     </div>
                     <div class="flex-1 ">
                         <h1>{{ cocktail.strDrink }} - Id: {{ cocktail.idDrink }}</h1>
