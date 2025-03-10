@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import './base.css';
 
 @tailwind utilities;
 
@@ -14,6 +13,23 @@
   --color-accent200: #9a8366;
   --color-text100: #483C32;
   --color-text200: #74665b;
-  
+}
 
+body{
+    height: 100%;
+    background-color: #F5F5DC;
+}
+
+p{
+    color: #483C32;
+}
+
+.debug-screens {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: black;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
 }

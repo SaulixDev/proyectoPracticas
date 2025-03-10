@@ -1,10 +1,10 @@
 <template>
     <div>
-        <li v-if="id===cocktailData[0]?.idDrink" v-for="(data, j) in cocktailData" :key="j">
+        <div v-if="id===cocktailData[0]?.idDrink" v-for="(data, j) in cocktailData" :key="j">
             <p>Category: {{ data.strCategory }}</p>
             <p>Type: {{ data.strAlcoholic }}</p>
             <p>Instructions: {{ data.strInstructions }}</p> 
-        </li>
+        </div>
 
     </div>
 </template>
