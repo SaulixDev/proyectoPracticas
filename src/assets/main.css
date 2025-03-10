@@ -1,1 +1,19 @@
 @import "tailwindcss";
+@import './base.css';
+
+@tailwind utilities;
+
+@theme{
+  --color-bg300: #c2c2aa;
+  --color-bg200: #ebebd2;
+  --color-bg100: #F5F5DC;
+  --color-primary100: #D2B48C;
+  --color-primary200: #b49770;
+  --color-primary300: #705834;
+  --color-accent100: #FFE4C4;
+  --color-accent200: #9a8366;
+  --color-text100: #483C32;
+  --color-text200: #74665b;
+  
+
+}
