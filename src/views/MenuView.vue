@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-bg-100 text-text-100">
+  <div class="bg-bg200">
     <button @click="() =>getAllCat()">Mostrar categorias</button>
     <button @click="() => getRandomMea()">Plato aleatorio</button>
     <div>
