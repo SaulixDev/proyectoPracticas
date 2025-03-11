@@ -13,6 +13,10 @@ export const useCocktailStore = defineStore('cocktail', {
 
         setCocktail(newDrink){
             this.cocktail = newDrink;
+        },
+
+        async getRandom(){
+
         }
     }
 })

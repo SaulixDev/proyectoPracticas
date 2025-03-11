@@ -13,6 +13,8 @@
   --color-accent200: #9a8366;
   --color-text100: #483C32;
   --color-text200: #74665b;
+
+  --font-title: "Times New Roman", Times, serif;
 }
 
 body{

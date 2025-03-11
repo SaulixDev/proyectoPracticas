@@ -1,19 +1,21 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <header>
     <div class="wrapper ">
 
-      <nav>
-        <p class="md:hidden">more</p>
-        <div class="collapse flex flex-col md:visible flex-row justify-evenly">
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/Cocktails">Cocktails</RouterLink>
-          <RouterLink to="/Deserts">Deserts</RouterLink>
-          <RouterLink to="/Menus">Menus</RouterLink>
+      <nav class="p-4 bg-bg300 text-white">
+        <div class="flex justify-between items-center">
+          <h1 class="md:hidden">Restaurante</h1>
+          <button @click="() => showNav()" class="md:hidden p-2 bg-text100 rounded">
+            ☰
+          </button>
+        </div>
+        
+        <div :class="`flex flex-col md:flex-row md:justify-evenly md:items-center 
+                    ${showMore ? 'block' : 'hidden'} md:flex`">
+          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/">Home</RouterLink>
+          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Cocktails">Cocktails</RouterLink>
+          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Deserts">Deserts</RouterLink>
+          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Menus">Menus</RouterLink>
         </div>
       </nav>
     </div>
@@ -21,6 +23,18 @@ import HelloWorld from './components/HelloWorld.vue'
 
   <RouterView />
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue';
+
+const showMore = ref(false);
+
+const showNav = () => {
+  showMore.value = !showMore.value
+  console.log(showMore.value)
+}
+</script>
 
 <style scoped>
 
