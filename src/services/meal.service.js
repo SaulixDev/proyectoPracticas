@@ -10,6 +10,16 @@ export async function getMealFromId(id){
     }
 }
 
+export async function getMealFromName(name){
+    try{
+        const response = await apiMeal.get(`/search.php?s=${name}`)
+        return response.data.meals
+    }catch(error){
+        console.error("Error al obtener la comida: ", error)
+        return [];
+    }
+}
+
 export async function getAllCategories(){
     try{
         let response = await apiMeal.get(`/list.php?c=list`)
