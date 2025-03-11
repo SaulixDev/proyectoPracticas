@@ -1,16 +1,15 @@
 <template>
     <div>
-        <li v-if="id===cocktailData[0]?.idDrink" v-for="(data, j) in cocktailData" :key="j">
-            <p>Category: {{ data.strCategory }}</p>
-            <p>Type: {{ data.strAlcoholic }}</p>
-            <p>Instructions: {{ data.strInstructions }}</p> 
-        </li>
+        <div class="md:text-lg" v-if="id===cocktailData[0]?.idDrink" v-for="(data, j) in cocktailData" :key="j">
+            <p class="pb-4"><b>> Category:</b> {{ data.strCategory }}</p>
+            <p class="pb-4"><b>> Type:</b> {{ data.strAlcoholic }}</p>
+            <p class="pb-4"><b>> Instructions:</b> {{ data.strInstructions }}</p> 
+        </div>
 
     </div>
 </template>
 
 <script setup>
-    import { getInfoById } from '@/services/cocktail.service';
     import { useCocktailStore } from '@/stores/cocktailStore';
     import { storeToRefs } from 'pinia';
     import { ref } from 'vue';
@@ -23,12 +22,6 @@
     }) 
     
     const cocktailData = ref(cocktail);
-
-    const getDrinkFromId = async (id) => {
-        console.log(id)
-        cocktailData.value = await getInfoById(id);
-        console.log('ff', cocktailData.value)
-    }
 
 </script>
 
