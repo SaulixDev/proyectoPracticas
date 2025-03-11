@@ -1,5 +1,5 @@
 <template>
-    <main :class="`static`">
+    <main class="static">
         <!-- Navegador de la página -->
         <nav class="p-1 bg-bg200 border-b-2 border-text100 sticky top-0">
             <!-- Icon para los dispositivos móviles -->
@@ -12,46 +12,76 @@
             <!-- Navehador -->
             <div :class="`flex flex-col md:flex-row md:justify-evenly md:items-center 
                     ${showMore ? 'block' : 'hidden'} md:flex`">
-                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300" @click="() => verCocktailAleatorio()">¿Buscas algo
-                    nuevo?</button>
-                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300" @click="() => showCategories()">Categorías</button>
+                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300"
+                    @click="() => verCocktailAleatorio()">{{ $t(`message.bttn.new`) }}</button>
+                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300"
+                    @click="() => showCategories()">{{ $t(`message.bttn.cat`) }}</button>
                 <!-- Categorías, flex para móviles, absolute para ordenadores -->
-                <span class="p-2 rounded-b-lg bg-accent200 text-text100 flex flex-col md:absolute top-[100%] right-[25%]" v-if="showCat">
-                    <div class="hover:bg-primary200 duration-100 border-b-1"><button @click="() => getDrinkAlcoholic()">> Bebidas alcohólicas</button></div>
-                    <div class="hover:bg-primary200 duration-100"><button @click="() => getDrinkNonAlcoholic()">> Bebidas no alcohólicas</button></div>
-                    <div class="hover:bg-primary200 duration-100 border-t-1" v-for="(cat, i) in cocktailCat" :key="i">
-                        <button @click="() => getDrinksFromCategorie(cat.strCategory)">> {{ cat.strCategory }}</button>
+                <span
+                    class="p-2 rounded-b-lg bg-accent200 text-text100 flex flex-col md:absolute top-[100%] right-[25%]"
+                    v-if="showCat">
+                    <div @click="() => getDrinkAlcoholic()" class="hover:bg-primary200 duration-100 border-b-1">
+                        > Bebidas alcohólicas
+                    </div>
+                    <div @click="() => getDrinkNonAlcoholic()" class="hover:bg-primary200 duration-100">
+                        > Bebidas no alcohólicas
+                    </div>
+                    <div @click="() => getDrinksFromCategorie(cat.strCategory)"
+                        class="hover:bg-primary200 duration-100 border-t-1" v-for="(cat, i) in cocktailCat" :key="i">
+                        > {{ cat.strCategory }}
                     </div>
                 </span>
             </div>
         </nav>
 
+        <!-- Input para buscar por nombre -->
         <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center">
-            <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="newName" placeholder="Buscar Bebida" />
-            <button @click="() => searchCocktailByName(newName)">Buscar</button>
+            <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="newName"
+                placeholder="Buscar Bebida" />
+            <button @click="() => searchCocktailByName(newName)">{{$t(`message.bttn.search`)}}</button>
         </div>
 
 
 
         <div class="m-2 p-2 rounded-lg bg-bg200" v-for="(cocktail, i) in cocktailList" :key="i">
-            <h1 class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl">{{ cocktail.strDrink }}<!--  - Id: {{ cocktail.idDrink }} --></h1>
+            <h1 class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl">
+                {{ cocktail.strDrink }}<!--  - Id: {{ cocktail.idDrink }} --></h1>
             <div class="flex flex-col md:flex-row w-ful gap-4">
                 <div class="p-3 w-full flex justify-center md:border-r-2 md:border-bg300 md:w-1/2">
-                    <img class="w-[80%] object-contain 2xl:w-[60%]" v-if="cocktail.strDrinkThumb" :src="cocktail.strDrinkThumb"
-                        alt="" />
+                    <img class="w-[80%] object-contain 2xl:w-[60%]" v-if="cocktail.strDrinkThumb"
+                        :src="cocktail.strDrinkThumb" alt="" />
                 </div>
                 <div class="px-12 p-4 w-full md:w-1/2">
                     <div class="mb-3 flex justify-center">
                         <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300"
-                            @click="() => getDrinkFromId(cocktail.idDrink)">Más info</button>
-                        <button class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300" @click="() => lessInfo()">Menos info</button>
+                            @click="() => getDrinkFromId(cocktail.idDrink)">{{ $t(`message.info.more`) }}</button>
+                        <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300"
+                            @click="() => lessInfo()">{{ $t(`message.info.less`) }}</button>
+                        <button class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300"
+                            @click="() => addToFavorites(cocktail.idDrink)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                            </svg>
+                        </button>
                     </div>
                     <CocktailInfo :id="cocktail.idDrink" />
                 </div>
             </div>
         </div>
 
+        <div class="fixed bottom-7 right-6">
+            <button
+                class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2"
+                @click="() => scrollToTop()">
 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                </svg>
+            </button>
+        </div>
     </main>
 </template>
 
@@ -72,15 +102,25 @@ const showMore = ref(false);
 
 //varibales del store
 const store = useCocktailStore();
-const { setCocktail } = store;
+const { setCocktail, getDrinkInfoById } = store;
 
+//Métodos para la página
 const showNav = () => {
     showMore.value = !showMore.value
     console.log(showMore.value)
 }
 
-const showCategories = async () => {
+const showCategories = () => {
     showCat.value = !showCat.value;
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+const addToFavorites = (id) => {
+    console.log(id)
+    getDrinkInfoById(id)
 }
 
 //métodos del service de la api
@@ -111,6 +151,7 @@ const getAllCat = async () => {
 
 const getDrinksFromCategorie = async (name) => {
     cocktailList.value = await getCategorie(name);
+    scrollToTop()
 }
 
 onMounted(() => {
