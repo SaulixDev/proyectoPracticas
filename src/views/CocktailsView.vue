@@ -42,10 +42,10 @@
         </div>
         
         <div class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200" v-for="(cocktail, i) in filterList" :key="i">
-            <h1 class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl">
+            <h1 class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl dark:border-black">
                 {{ cocktail.strDrink }}<!--  - Id: {{ cocktail.idDrink }} --></h1>
             <div class="flex flex-col md:flex-row w-ful gap-4">
-                <div class="p-3 w-full flex justify-center md:border-r-2 md:border-bg300 md:w-1/2">
+                <div class="p-3 w-full flex justify-center md:border-r-2 md:border-bg300 md:w-1/2 md:dark:border-black">
                     <img class="w-[80%] object-contain 2xl:w-[60%]" v-if="cocktail.strDrinkThumb"
                         :src="cocktail.strDrinkThumb" alt="" />
                 </div>

@@ -1,7 +1,5 @@
 <template>
-  <main class="h-[100%]">
-    <TheWelcome />
-    
+  <main>
   </main>
 </template>
 

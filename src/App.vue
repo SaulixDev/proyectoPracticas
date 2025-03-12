@@ -12,12 +12,12 @@
 
           <div :class="`flex flex-col text-center md:flex-row md:justify-evenly md:items-center 
                       ${showMore ? 'block' : 'hidden'} md:flex`">
-            <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/">Home</RouterLink>
-            <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/Menus">
+            <RouterLink class="w-[30%] p-2 md:border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/">Home</RouterLink>
+            <RouterLink class="w-[30%] p-2 md:border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/Menus">
               {{ $t(`message.nav.food`) }}</RouterLink>
-            <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/Cocktails">Cocktail
+            <RouterLink class="w-[30%] p-2 md:border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/Cocktails">Cocktail
             </RouterLink>
-            <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/Favorites">
+            <RouterLink class="w-[30%] p-2 md:border-r-1 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200" to="/Favorites">
               {{ $t(`message.nav.fav`) }}</RouterLink>
             <div class="w-[30%] flex justify-evenly p-2 hover:bg-text200 rounded duration-300 dark:hover:bg-dbg200">
               <LanguageSwitch />
