@@ -7,7 +7,7 @@
                 <p class="text-center">{{$t(`message.fav.drink`)}}</p>
             </div>
             <div class="entrybg .dark p-3 bg-bg200 rounded-lg md:flex flex-row" v-for="(fav, i) in favoriteDrinks" :key="i">
-                <img class="mr-3 w-[40%] rounded-lg" v-if="fav.strDrinkThumb" :src="fav.strDrinkThumb" alt="" />
+                <img class="mr-3 w-[40%] rounded-lg hover:scale-105 duration-500" v-if="fav.strDrinkThumb" :src="fav.strDrinkThumb" alt="" />
                 <div>
                     <p class="mb-3 text-center text-xl font-title border-b-1 border-primary200"><b>{{ fav.strDrink }} -
                             {{ fav.idDrink }}</b></p>
@@ -29,7 +29,7 @@
                 <p class="text-center">{{$t(`message.fav.food`)}}</p>
             </div>
             <div class="entrybg p-3 bg-bg200 rounded-lg md:flex flex-row" v-for="(fav, i) in favoriteMeals" :key="i">
-                <img class="mr-3 w-[40%] rounded-lg" v-if="fav.strMealThumb" :src="fav.strMealThumb" alt="" />
+                <img class="mr-3 w-[40%] rounded-lg hover:scale-105 duration-500" v-if="fav.strMealThumb" :src="fav.strMealThumb" alt="" />
                 <div>
                     <p class="mb-3 text-center text-xl font-title border-b-1 border-primary200"><b>{{ fav.strMeal }} -
                             {{ fav.idMeal }}</b></p>
@@ -47,7 +47,7 @@
 
         <div class="fixed bottom-7 right-6 z-30">
             <button
-                class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2 dark:bg-dbg300 dark:border-black"
+                class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2 dark:bg-dbg100 dark:border-black dark:hover:bg-dbg100"
                 @click="() => scrollToTop()">
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
