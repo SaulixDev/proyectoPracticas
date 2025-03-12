@@ -1,14 +1,19 @@
 <template>
-  <main class="bg-bg100 text-text100 p-4 static">
+  <main class="bg-bg100 text-text100 p-4 static text-text100">
     <div
-      class="flex flex-col sticky top-0 justify-left bg-bg100 border-b-1 md:border-b-0 md:relative"
+      class="flex flex-col sticky top-0 justify-left pb-1 bg-bg100 border-b-2 border-text100 md:relative"
     >
       <div>
-        <button @click="() => showNav()" class="md:hidden rounded">☰</button>
+        <button
+          @click="() => showNav()"
+          class="m-[10px] p-2 rounded bg-text100 text-white md:hidden"
+        >
+          ☰
+        </button>
       </div>
       <div
         v-if="showMore"
-        class="flex flex-col gap-1 mx-15 md:flex-row md:justify-center md:mx-0 md:bg-bg100 md:gap-5"
+        class="flex flex-col gap-1 mx-15 md:flex-row md:justify-evenly md:items-center flex md:bg-bg100 md:gap-5"
       >
         <button
           @click="() => getRandomMea()"
@@ -22,7 +27,7 @@
       </div>
       <div
         v-if="cats"
-        class=" flex m-10 flex-col md:flex md:flex-col md:ml-[40%] md:mr-[53%] mb-0 "
+        class="flex m-10 flex-col md:flex md:flex-col md:ml-[40%] md:mr-[53%] mb-0"
       >
         <button
           class="flex hover:bg-primary100"
@@ -33,49 +38,38 @@
         </button>
       </div>
     </div>
-    <div class="bg-bg300 pl-8 mt-2 md:justify-center md:flex md:bg-bg100">
+    <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center">
       <input
         type="text"
         placeholder="Sopa de verduras"
-        v-model="menuName"
-        class="md:bg-bg200"
+        v-model="menuFilter"
+        class="m-2 w-[80%] border-r-1 border-text200"
       />
       <button
         @click="() => searchForName()"
-        class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 ml-29 md:bg-primary100"
+        class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 md:bg-primary100"
       >
         {{$t(`message.bttn.search`)}}
       </button>
     </div>
-    <div class="bg-bg300 pl-8 mt-2 md:justify-center md:flex md:bg-bg100">
-      <input
-        type="text"
-        placeholder="Sopa de verduras"
-        v-model="menuName"
-        class="md:bg-bg200"
-      />
-      <button
-        @click="() => filtrar()"
-        class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 ml-29 md:bg-primary100"
-      >Filtrar
-     </button>
-    </div>
-    <div class="flex m-10 md:justify-center">
-      <div class="">
-        <div class="">
-          <div class="flex flex-col gap-1" v-for="(meal, i) in meals">
-            <h1 class="text-center font-bold">{{ meal.strMeal }}</h1>
-            <img
-              v-if="meal.strMealThumb"
-              :src="meal.strMealThumb"
-              alt=""
-              class="md:w-[50%] md:ml-[25%]"
-            />
 
-            <div class="md: ml-[25%]">
-              <MenuInfo :data="meal?.data ? meal.data : meal" />
-            </div>
-          </div>
+    <div class="m-2 p-2 rounded-lg bg-bg200" v-for="(meal, i) in filteredMeals">
+      <h1
+        class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl"
+      >
+        {{ meal.strMeal }}
+      </h1>
+      <div class="grid grid-cols-2">
+        <div class="md:border-r-2 md:border-bg300">
+          <img
+            v-if="meal.strMealThumb"
+            :src="meal.strMealThumb"
+            alt=""
+            class="w-[80%] object-contain md:w-[50%] 2xl:w-[67%]"
+          />
+        </div>
+        <div class="">
+          <MenuInfo :data="meal?.data ? meal.data : meal" />
         </div>
       </div>
     </div>
@@ -107,7 +101,7 @@
 <script setup>
 import MenuInfo from "@/components/menuInfo.vue";
 import { useMenuStore } from "@/stores/menuStores";
-import { computed, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 const store = useMenuStore();
 const meals = computed(() => store.meals);
 const categories = computed(() => store.categories);
@@ -115,6 +109,14 @@ const { setMenu } = store;
 const showMore = ref(true);
 const cats = ref(false);
 const menuName = ref("");
+const menuFilter = ref("");
+
+const filteredMeals = computed(() => {
+  return meals.value.filter((meal) =>
+    meal.strMeal.toLowerCase().includes(menuFilter.value.toLowerCase())
+  );
+});
+console.log(filteredMeals);
 
 const {
   getAllCategories,
@@ -122,14 +124,6 @@ const {
   getMealFromName,
   getRandomMeal,
 } = store;
-
-function filtrar(){
-
-}
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
 
 const showCategories = () => {
   cats.value = !cats.value;
@@ -149,7 +143,7 @@ const showNav = () => {
 async function searchForName() {
   store.meals = [];
   store.categories = [];
-  await getMealFromName(menuName.value);
+  await getMealFromName(menuFilter.value);
   meals.value = store.meals;
 }
 
@@ -160,6 +154,7 @@ async function searchForCategorie(categorie) {
   meals.value = store.meals;
   console.log(meals.value);
 }
+console.log(filteredMeals);
 
 async function getRandomMea() {
   meals.value = [];
