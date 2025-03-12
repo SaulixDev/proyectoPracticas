@@ -1,7 +1,7 @@
 <template>
     <main class="static">
         <!-- Navegador de la página -->
-        <nav class="p-1 bg-bg200 border-b-2 border-text100 sticky top-0">
+        <nav class="p-1 bg-bg200 border-b-2 border-text100 sticky top-0 dark:bg-dbg200 dark:border-black">
             <!-- Icon para los dispositivos móviles -->
             <div class="flex justify-between items-center">
                 <button @click="() => showNav()" class="m-[10px] p-2 rounded bg-text100 text-white md:hidden">
@@ -12,13 +12,13 @@
             <!-- Navegador -->
             <div :class="`flex flex-col md:flex-row md:justify-evenly md:items-center 
                     ${showMore ? 'block' : 'hidden'} md:flex`">
-                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300"
+                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                     @click="() => verCocktailAleatorio()">{{ $t(`message.bttn.new`) }}</button>
-                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300"
+                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                     @click="() => showCategories()">{{ $t(`message.bttn.cat`) }}</button>
                 <!-- Categorías, flex para móviles, absolute para ordenadores -->
                 <span
-                    class="p-2 rounded-b-lg bg-accent200 text-text100 flex flex-col md:absolute top-[100%] right-[25%]"
+                    class="p-2 rounded-b-lg bg-accent200 text-text100 flex flex-col md:absolute top-[100%] right-[25%] dark:bg-daccent200"
                     v-if="showCat">
                     <div @click="() => getDrinkAlcoholic()" class="hover:bg-primary200 duration-100 border-b-1">
                         > {{$t(`message.bttn.noAlc`)}}
@@ -28,25 +28,20 @@
                     </div>
                     <div @click="() => getDrinksFromCategorie(cat.strCategory)"
                         class="hover:bg-primary200 duration-100 border-t-1" v-for="(cat, i) in cocktailCat" :key="i">
-                        > {{ cat.strCategory }}
+                        <p>> {{ cat.strCategory }}</p>
                     </div>
                 </span>
             </div>
         </nav>
 
         <!-- Input para buscar por nombre -->
-        <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center">
+        <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center dark:bg-dbg200">
             <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="searchWord"
             placeholder="Buscar Bebida" />
             <button @click="() => searchCocktailByName(searchWord)">{{$t(`message.bttn.search`)}}</button>
         </div>
-
-        <!-- <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center">
-            <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="searchWord"
-                placeholder="Buscar Bebida" />
-        </div> -->
         
-        <div class="m-2 p-2 rounded-lg bg-bg200" v-for="(cocktail, i) in filterList" :key="i">
+        <div class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200" v-for="(cocktail, i) in filterList" :key="i">
             <h1 class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl">
                 {{ cocktail.strDrink }}<!--  - Id: {{ cocktail.idDrink }} --></h1>
             <div class="flex flex-col md:flex-row w-ful gap-4">
@@ -56,11 +51,11 @@
                 </div>
                 <div class="px-12 p-4 w-full md:w-1/2">
                     <div class="mb-3 flex justify-center">
-                        <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300"
+                        <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                             @click="() => getDrinkFromId(cocktail.idDrink)">{{ $t(`message.info.more`) }}</button>
-                        <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300"
+                        <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                             @click="() => lessInfo()">{{ $t(`message.info.less`) }}</button>
-                        <button class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300"
+                        <button class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                             @click="() => addToFavorites(cocktail.idDrink)">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
