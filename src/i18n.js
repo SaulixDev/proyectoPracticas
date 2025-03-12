@@ -31,7 +31,6 @@ const i18n = createI18n({
             input: {
                 search: 'Search cocktail',
             },
-          hello: 'hello world',
         },
       },
       esp: {
@@ -59,7 +58,6 @@ const i18n = createI18n({
             input: {
                 search: 'Buscar cocktail',
             },
-          hello: 'Hola mundo',
         },
       },
     },
