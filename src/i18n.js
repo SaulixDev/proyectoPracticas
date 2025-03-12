@@ -14,6 +14,7 @@ const i18n = createI18n({
                 search: 'Search',
                 alc: 'Alcoholic Drinks',
                 noAlc: 'Non Alcoholic Drinks',
+                lang: '🇪🇸',
             },
             nav: {
                 food: 'Meal',
@@ -41,6 +42,7 @@ const i18n = createI18n({
                 search: 'Buscar',
                 alc: 'Bebidas alcohólicas',
                 noAlc: 'Bebidas no alcohólicas',
+                lang: '🇬🇧',
             },
             nav: {
                 food: 'Comida',

@@ -17,6 +17,7 @@
           <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Cocktails">Cocktail</RouterLink>
           <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Deserts">Deserts</RouterLink>
           <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Favorites">{{$t(`message.nav.fav`)}}</RouterLink>
+          <LanguageSwitch/>
         </div>
       </nav>
     </div>
@@ -29,6 +30,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue';
+import LanguageSwitch from '@/components/LanguageSwitch.vue';
 
 const showMore = ref(false);
 
