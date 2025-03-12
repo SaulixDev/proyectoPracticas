@@ -1,35 +1,45 @@
-@import './base.css';
+@import "tailwindcss";
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+@tailwind utilities;
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-bg300: #c2c2aa;
+    --color-bg200: #ebebd2;
+    --color-bg100: #F5F5DC;
+    --color-primary100: #D2B48C;
+    --color-primary200: #b49770;
+    --color-primary300: #705834;
+    --color-accent100: #FFE4C4;
+    --color-accent200: #9a8366;
+    --color-text100: #483C32;
+    --color-text200: #74665b;
+
+    --color-dbg300: #2a2a1f;
+    --color-dbg200: #3a3a2f;
+    --color-dbg100: #4a4a3f;
+    --color-dprimary100: #8c6f4f;
+    --color-dprimary200: #705834;
+    --color-dprimary300: #4f3a24;
+    --color-daccent100: #b49a7a;
+    --color-daccent200: #8c7359;
+    --color-dtext100: #e0d6cc;
+    --color-dtext200: #b8a99b;
+
+    --font-title: "Times New Roman", Times, serif;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
+/* p {
+    color: #483C32;
+} */
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.debug-screens {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: black;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
 }

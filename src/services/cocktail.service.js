@@ -4,7 +4,7 @@ import { apiCocktails } from "./api";
 export async function getCocktailByName(name) {
   try {
     const response = await apiCocktails.get(`/search.php?s=${name}`);
-    return response.data;
+    return response.data.drinks;
   } catch (error) {
     console.log("Error no se ha podido recoger el Cocktel", error);
     return error;
@@ -38,6 +38,17 @@ export async function getListByLetter(letter) {
 export async function getIngredientsByName(name) {
   try {
     const response = await apiCocktails.get(`/search.php?i=${name}`);
+    return response.data.ingredients;
+  } catch (error) {
+    console.log("Error no se pudo recoger el cocktaikl", error);
+    return error;
+  }
+}
+
+export async function getInfoById(id) {
+  try {
+    const response = await apiCocktails.get(`/lookup.php?i=${id}`);
+    return response.data.drinks;
   } catch (error) {
     console.log("Error no se pudo recoger el cocktaikl", error);
     return error;
@@ -48,6 +59,7 @@ export async function getIngredientsByName(name) {
 export async function getAlcoholic() {
   try {
     const response = await apiCocktails.get(`filter.php?a=Alcoholic`);
+    return response.data.drinks;
   } catch (error) {
     console.log("Error no se pudo recoger el cocktail", error);
     return error;
@@ -58,6 +70,7 @@ export async function getAlcoholic() {
 export async function getNonAlcoholic() {
   try {
     const response = await apiCocktails.get(`filter.php?a=Non_Alcoholic`);
+    return response.data.drinks;
   } catch (error) {
     console.log("Error no se pudo recoger el cocktail", error);
     return error;
@@ -78,6 +91,7 @@ export async function getCategorieOrdinary() {
 export async function getCategorie(name) {
   try {
     const response = await apiCocktails.get(`filter.php?c=${name}`);
+    return response.data.drinks;
   } catch (error) {
     console.log("Error no se pudo recoger el cocktail", error);
     return error;
@@ -108,7 +122,7 @@ export async function getVasoChampagne() {
 export async function getAllCategoria() {
   try {
     let response = await apiCocktails.get(`/list.php?c=list`);
-    return response.drinks;
+    return response.data.drinks;
   } catch (error) {
     console.log("Error a obtener la lista", error);
     return error;
