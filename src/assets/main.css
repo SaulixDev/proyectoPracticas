@@ -2,28 +2,37 @@
 
 @tailwind utilities;
 
-/* @custom-variant dark (&:where(.dark, .dark *)); */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@theme {
+    --color-bg300: #c2c2aa;
+    --color-bg200: #ebebd2;
+    --color-bg100: #F5F5DC;
+    --color-primary100: #D2B48C;
+    --color-primary200: #b49770;
+    --color-primary300: #705834;
+    --color-accent100: #FFE4C4;
+    --color-accent200: #9a8366;
+    --color-text100: #483C32;
+    --color-text200: #74665b;
 
-@theme{
-  --color-bg300: #c2c2aa;
-  --color-bg200: #ebebd2;
-  --color-bg100: #F5F5DC;
-  --color-primary100: #D2B48C;
-  --color-primary200: #b49770;
-  --color-primary300: #705834;
-  --color-accent100: #FFE4C4;
-  --color-accent200: #9a8366;
-  --color-text100: #483C32;
-  --color-text200: #74665b;
+    --color-dbg300: #2a2a1f;
+    --color-dbg200: #3a3a2f;
+    --color-dbg100: #4a4a3f;
+    --color-dprimary100: #8c6f4f;
+    --color-dprimary200: #705834;
+    --color-dprimary300: #4f3a24;
+    --color-daccent100: #b49a7a;
+    --color-daccent200: #8c7359;
+    --color-dtext100: #e0d6cc;
+    --color-dtext200: #b8a99b;
 
-  --font-title: "Times New Roman", Times, serif;
+    --font-title: "Times New Roman", Times, serif;
 }
 
-p{
+/* p {
     color: #483C32;
-}
+} */
 
 .debug-screens {
     position: fixed;
