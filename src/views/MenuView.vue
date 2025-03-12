@@ -13,16 +13,19 @@
       </div>
       <div
         v-if="showMore"
-        class="flex flex-col gap-1 mx-15 md:flex-row md:justify-evenly md:items-center flex md:bg-bg100 md:gap-5"
+        class="flex flex-col gap-1 mx-15 md:flex-row md:justify-evenly md:items-center flex md:bg-bg100 md:gap-5 md:dark:bg-dbg200"
       >
         <button
           @click="() => getRandomMea()"
           class="focus:outline-2 focus:outline-offset-2 bg-primary100 dark:hover:bg-dbg300 dark:bg-dbg100"
         >
-          {{$t(`message.bttn.new`)}}
+          {{ $t(`message.bttn.new`) }}
         </button>
-        <button @click="() => getAllCat()" class="focus:outline-2 focus:outline-offset-2 bg-primary100 dark:hover:bg-dbg300 dark:bg-dbg100">
-          {{$t(`message.bttn.cat`)}}
+        <button
+          @click="() => getAllCat()"
+          class="focus:outline-2 focus:outline-offset-2 bg-primary100 dark:hover:bg-dbg300 dark:bg-dbg100"
+        >
+          {{ $t(`message.bttn.cat`) }}
         </button>
       </div>
       <div
@@ -34,7 +37,7 @@
           v-for="(category, i) in categories"
           @click="() => searchForCategorie(category.strCategory)"
         >
-         > {{ category.strCategory }}
+          > {{ category.strCategory }}
         </button>
       </div>
     </div>
@@ -47,13 +50,16 @@
       />
       <button
         @click="() => searchForName()"
-        class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 md:bg-primary100"
+        class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 md:bg-primary100 md:dark:bg-dbg200"
       >
-        {{$t(`message.bttn.search`)}}
+        {{ $t(`message.bttn.search`) }}
       </button>
     </div>
 
-    <div class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200" v-for="(meal, i) in filteredMeals">
+    <div
+      class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200"
+      v-for="(meal, i) in filteredMeals"
+    >
       <h1
         class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl"
       >
