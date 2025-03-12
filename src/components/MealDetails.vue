@@ -1,5 +1,5 @@
 <template>
-  <div v-if="meal" class="m-2 p-2 rounded-lg bg-bg200 md:text-lg">
+  <div v-if="meal" class="m-2 p-2 rounded-lg bg-bg200 md:text-lg dark:bg-dbg200">
     <h1
       class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl"
     >
@@ -18,7 +18,7 @@
       </div>
       <div class="mt-8">
         <RouterLink
-          class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3 "
+          class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3 dark:bg-dbg100 dark:hover:bg-dbg300"
           to="/Menus"
           >{{ $t(`message.info.less`) }}</RouterLink
         >
