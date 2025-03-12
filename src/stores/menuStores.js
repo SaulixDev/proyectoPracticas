@@ -10,6 +10,7 @@ export const useMenuStore = defineStore("menu", {
     areas: [],
     ingredientexs: [],
     error: null,
+    favoriteMeals: [],
   }),
   actions: {
     changeId(newId) {
@@ -21,6 +22,21 @@ export const useMenuStore = defineStore("menu", {
       this.menu = newMenu;
     },
 
+     deleteMeal(menu){
+                var index = this.favoriteMeals.indexOf(menu)
+                this.favoriteMeals.splice(index, 1)
+            },
+               async getMealInfoById(id) {
+                        try {
+                            const response = await apiMeal.get(`/lookup.php?i=${id}`)
+                            const [data] = response.data.meals
+                            this.favoriteMeals.push(data)
+                        } catch (error) {
+                            console.log("Error no se pudo recoger la comida", error)
+                            return error;
+                        }
+                    },
+    
     async getMealFromId(id) {
       try {
         const response = await apiMeal.get(`/lookup.php?i=${id}`);

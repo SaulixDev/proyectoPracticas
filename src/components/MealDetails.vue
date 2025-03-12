@@ -28,9 +28,7 @@ const meal = ref(null);
 
 onMounted(async () => {
   try {
-    console.log(route.params.id);
     const mealData = await store.getMealFromId(route.params.id);
-    console.log(mealData);
     if (mealData && mealData.length > 0) {
       meal.value = mealData[0];
     } else {

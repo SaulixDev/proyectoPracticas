@@ -58,10 +58,12 @@
               alt=""
               class="md:w-[50%]"
             />
+            
             <div>
               <MenuInfo :data="meal?.data ? meal.data : meal" />
             </div>
           </div>
+          
         </div>
       </div>
     </div>
@@ -117,10 +119,7 @@ const showCategories = () => {
   cats.value = !cats.value;
 };
 
-const addToFavorites = (id) => {
-    console.log(id)
-    getMealInfoById(id)
-}
+
 
 async function getAllCat() {
   store.meals = [];
