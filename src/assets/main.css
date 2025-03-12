@@ -2,6 +2,10 @@
 
 @tailwind utilities;
 
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme{
   --color-bg300: #c2c2aa;
   --color-bg200: #ebebd2;
@@ -15,11 +19,6 @@
   --color-text200: #74665b;
 
   --font-title: "Times New Roman", Times, serif;
-}
-
-.body{
-    height: 500px;
-    background-color: #F5F5DC;
 }
 
 p{
