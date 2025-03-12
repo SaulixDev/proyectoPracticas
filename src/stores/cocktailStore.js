@@ -1,22 +1,20 @@
 import { defineStore } from "pinia";
 
-export const useCocktailStore = defineStore('cocktail', {
-    state: () => ({
-        storeId: 13581,
-        cocktail: '',
-    }),
-    actions: {
-        changeId(newId){
-            console.log(newId)
-            this.storeId = newId;
-        },
+export const useCocktailStore = defineStore("cocktail", {
+  state: () => ({
+    storeId: 13581,
+    cocktail: "",
+  }),
+  actions: {
+    changeId(newId) {
+      console.log(newId);
+      this.storeId = newId;
+    },
 
-        setCocktail(newDrink){
-            this.cocktail = newDrink;
-        },
+    setCocktail(newDrink) {
+      this.cocktail = newDrink;
+    },
 
-        async getRandom(){
-
-        }
-    }
-})
+    async getRandom() {},
+  },
+});
