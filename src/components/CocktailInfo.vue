@@ -11,20 +11,18 @@
 </template>
 
 <script setup>
-import { useCocktailStore } from '@/stores/cocktailStore';
-import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
+import { useCocktailStore } from "@/stores/cocktailStore";
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
 
 const store = useCocktailStore();
 const { cocktail } = storeToRefs(store);
 
 defineProps({
-    id: String
-})
+  id: String,
+});
 
 const cocktailData = ref(cocktail);
-
-
 </script>
 
 <style scoped></style>

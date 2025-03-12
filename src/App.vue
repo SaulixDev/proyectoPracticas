@@ -1,11 +1,13 @@
 <template>
   <header>
-    <div class="wrapper ">
-
+    <div class="wrapper">
       <nav class="p-4 bg-bg300 text-white">
         <div class="flex justify-between items-center">
           <h1 class="md:hidden">Restaurante</h1>
-          <button @click="() => showNav()" class="md:hidden p-2 bg-text100 rounded">
+          <button
+            @click="() => showNav()"
+            class="md:hidden p-2 bg-text100 rounded"
+          >
             ☰
           </button>
         </div>
@@ -35,11 +37,8 @@ import LanguageSwitch from '@/components/LanguageSwitch.vue';
 const showMore = ref(false);
 
 const showNav = () => {
-  showMore.value = !showMore.value
-  console.log(showMore.value)
-}
+  showMore.value = !showMore.value;
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

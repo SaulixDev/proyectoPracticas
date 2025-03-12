@@ -87,10 +87,17 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { getCocktailByName, getAlcoholic, getNonAlcoholic, getRandomCocktail, getInfoById, getAllCategoria, getCategorie } from "@/services/cocktail.service";
+import {
+  getCocktailByName,
+  getAlcoholic,
+  getNonAlcoholic,
+  getRandomCocktail,
+  getInfoById,
+  getAllCategoria,
+  getCategorie,
+} from "@/services/cocktail.service";
 import { useCocktailStore } from "@/stores/cocktailStore";
 import CocktailInfo from "@/components/CocktailInfo.vue";
-
 
 //Variables de almacenamiento
 const cocktailList = ref([]);
@@ -106,9 +113,9 @@ const { setCocktail, getDrinkInfoById } = store;
 
 //Métodos para la página
 const showNav = () => {
-    showMore.value = !showMore.value
-    console.log(showMore.value)
-}
+  showMore.value = !showMore.value;
+  console.log(showMore.value);
+};
 
 const showCategories = () => {
     showCat.value = !showCat.value;
@@ -125,29 +132,29 @@ const addToFavorites = (id) => {
 
 //métodos del service de la api
 const verCocktailAleatorio = async () => {
-    cocktailList.value = await getRandomCocktail()
-}
+  cocktailList.value = await getRandomCocktail();
+};
 
 const getDrinkAlcoholic = async () => {
-    cocktailList.value = await getAlcoholic();
-}
+  cocktailList.value = await getAlcoholic();
+};
 
 const getDrinkNonAlcoholic = async () => {
-    cocktailList.value = await getNonAlcoholic();
-}
+  cocktailList.value = await getNonAlcoholic();
+};
 
 const getDrinkFromId = async (id) => {
-    cocktailData.value = await getInfoById(id);
-    setCocktail(cocktailData.value)
-}
+  cocktailData.value = await getInfoById(id);
+  setCocktail(cocktailData.value);
+};
 
 const searchCocktailByName = async (name) => {
-    cocktailList.value = await getCocktailByName(name);
-}
+  cocktailList.value = await getCocktailByName(name);
+};
 
 const getAllCat = async () => {
-    cocktailCat.value = await getAllCategoria();
-}
+  cocktailCat.value = await getAllCategoria();
+};
 
 const getDrinksFromCategorie = async (name) => {
     cocktailList.value = await getCategorie(name);
@@ -155,18 +162,16 @@ const getDrinksFromCategorie = async (name) => {
 }
 
 onMounted(() => {
-    getAllCat();
-})
+  getAllCat();
+});
 
 async function lessInfo() {
-    setCocktail([])
+  setCocktail([]);
 }
-
-
 </script>
 
 <style scoped>
 img {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 </style>
