@@ -12,6 +12,8 @@ const i18n = createI18n({
                 new: 'Looking for something new?',
                 cat: 'Categories',
                 search: 'Search',
+                alc: 'Alcoholic Drinks',
+                noAlc: 'Non Alcoholic Drinks',
             },
             nav: {
                 food: 'Meal',
@@ -37,6 +39,8 @@ const i18n = createI18n({
                 new: '¿Buscas algo nuevo?',
                 cat: 'Categorías',
                 search: 'Buscar',
+                alc: 'Bebidas alcohólicas',
+                noAlc: 'Bebidas no alcohólicas',
             },
             nav: {
                 food: 'Comida',

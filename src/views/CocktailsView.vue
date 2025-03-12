@@ -21,10 +21,10 @@
                     class="p-2 rounded-b-lg bg-accent200 text-text100 flex flex-col md:absolute top-[100%] right-[25%]"
                     v-if="showCat">
                     <div @click="() => getDrinkAlcoholic()" class="hover:bg-primary200 duration-100 border-b-1">
-                        > Bebidas alcohólicas
+                        > {{$t(`message.bttn.noAlc`)}}
                     </div>
                     <div @click="() => getDrinkNonAlcoholic()" class="hover:bg-primary200 duration-100">
-                        > Bebidas no alcohólicas
+                        > {{$t(`message.bttn.noAlc`)}}
                     </div>
                     <div @click="() => getDrinksFromCategorie(cat.strCategory)"
                         class="hover:bg-primary200 duration-100 border-t-1" v-for="(cat, i) in cocktailCat" :key="i">
