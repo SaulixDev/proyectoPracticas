@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="h-[100%]">
     <TheWelcome />
     
   </main>

@@ -17,8 +17,8 @@
   --font-title: "Times New Roman", Times, serif;
 }
 
-body{
-    height: 100%;
+.body{
+    height: 500px;
     background-color: #F5F5DC;
 }
 

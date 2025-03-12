@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="fixed bottom-7 right-6">
+        <div class="fixed z-30 bottom-7 right-6">
             <button
                 class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2"
                 @click="() => scrollToTop()">
@@ -184,4 +184,5 @@ async function lessInfo() {
 img {
   border-radius: 20px;
 }
+
 </style>
