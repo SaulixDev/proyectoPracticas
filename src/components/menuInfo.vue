@@ -4,7 +4,7 @@
       @click="() => moreInfo()"
       class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3"
     >
-      More Info
+      {{$t(`message.info.more`)}}
     </button>
     <button class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300"
                             @click="() => addToFavorites(data.idMeal)">

@@ -9,7 +9,7 @@ import { useI18n } from "vue-i18n";
 import { ref } from 'vue';
 
 const { locale, t } = useI18n();
-const isEng = ref(false)
+const isEng = ref(true)
 const lang = ref(document.getElementById('l'))
 
 const changeLanguage = () => {

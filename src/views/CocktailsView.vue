@@ -9,7 +9,7 @@
                 </button>
                 <h1 class="m-4 text-text100 text-xl md:hidden">More</h1>
             </div>
-            <!-- Navehador -->
+            <!-- Navegador -->
             <div :class="`flex flex-col md:flex-row md:justify-evenly md:items-center 
                     ${showMore ? 'block' : 'hidden'} md:flex`">
                 <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300"
@@ -36,14 +36,17 @@
 
         <!-- Input para buscar por nombre -->
         <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center">
-            <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="newName"
-                placeholder="Buscar Bebida" />
-            <button @click="() => searchCocktailByName(newName)">{{$t(`message.bttn.search`)}}</button>
+            <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="searchWord"
+            placeholder="Buscar Bebida" />
+            <button @click="() => searchCocktailByName(searchWord)">{{$t(`message.bttn.search`)}}</button>
         </div>
 
-
-
-        <div class="m-2 p-2 rounded-lg bg-bg200" v-for="(cocktail, i) in cocktailList" :key="i">
+        <!-- <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center">
+            <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="searchWord"
+                placeholder="Buscar Bebida" />
+        </div> -->
+        
+        <div class="m-2 p-2 rounded-lg bg-bg200" v-for="(cocktail, i) in filterList" :key="i">
             <h1 class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl">
                 {{ cocktail.strDrink }}<!--  - Id: {{ cocktail.idDrink }} --></h1>
             <div class="flex flex-col md:flex-row w-ful gap-4">
@@ -86,7 +89,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import {
   getCocktailByName,
   getAlcoholic,
@@ -103,6 +106,15 @@ import CocktailInfo from "@/components/CocktailInfo.vue";
 const cocktailList = ref([]);
 const cocktailData = ref([]);
 const cocktailCat = ref([]);
+
+const newName = ref('');
+const searchWord = ref('');
+
+const filterList = computed(() => {
+  return (cocktailList.value || []).filter(cocktail =>
+    String(cocktail.strDrink).toLowerCase().includes((searchWord.value || '').toLowerCase())
+  );
+});
 
 const showCat = ref(false);
 const showMore = ref(false);

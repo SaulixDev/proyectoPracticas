@@ -14,10 +14,10 @@
           @click="() => getRandomMea()"
           class="focus:outline-2 focus:outline-offset-2 bg-primary100"
         >
-          ¿Buscas algo nuevo?
+          {{$t(`message.bttn.new`)}}
         </button>
         <button @click="() => getAllCat()" class="focus:outline-2 focus:outline-offset-2 bg-primary100">
-          Categorias
+          {{$t(`message.bttn.cat`)}}
         </button>
       </div>
       <div
@@ -44,7 +44,7 @@
         @click="() => searchForName()"
         class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 ml-29 md:bg-primary100"
       >
-        Buscar
+        {{$t(`message.bttn.search`)}}
       </button>
     </div>
     <div class="flex m-10 md:justify-center lg:justify-end">

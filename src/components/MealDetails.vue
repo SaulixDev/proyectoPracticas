@@ -9,7 +9,7 @@
     <RouterLink
       class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3"
       to="/Menus"
-      >Less info</RouterLink
+      >{{ $t(`message.info.less`) }}</RouterLink
     >
   </div>
   <div v-else>

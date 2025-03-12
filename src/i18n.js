@@ -21,8 +21,8 @@ const i18n = createI18n({
                 fav: 'Favorites',
             },
             fav: {
-                drink: 'There is no favorite cocktail',
-                food: 'There is no favorite meal',
+                drink: 'There is no favorite cocktails',
+                food: 'There is no favorite meals',
             },
             info: {
                 more: 'More info',

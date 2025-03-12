@@ -12,13 +12,13 @@
           </button>
         </div>
         
-        <div :class="`flex flex-col md:flex-row md:justify-evenly md:items-center 
+        <div :class="`flex flex-col text-center md:flex-row md:justify-evenly md:items-center 
                     ${showMore ? 'block' : 'hidden'} md:flex`">
-          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/">Home</RouterLink>
-          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Menus">{{$t(`message.nav.food`)}}</RouterLink>
-          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Cocktails">Cocktail</RouterLink>
-          <RouterLink class="p-2 hover:bg-text200 rounded duration-300" to="/Favorites">{{$t(`message.nav.fav`)}}</RouterLink>
-          <LanguageSwitch/>
+          <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300" to="/">Home</RouterLink>
+          <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300" to="/Menus">{{$t(`message.nav.food`)}}</RouterLink>
+          <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300" to="/Cocktails">Cocktail</RouterLink>
+          <RouterLink class="w-[30%] p-2 border-r-1 hover:bg-text200 rounded duration-300" to="/Favorites">{{$t(`message.nav.fav`)}}</RouterLink>
+          <LanguageSwitch class="w-[30%] p-2 hover:bg-text200 rounded duration-300"/>
         </div>
       </nav>
     </div>
