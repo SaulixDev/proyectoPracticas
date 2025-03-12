@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { apiMeal } from "@/services/api";
+import { apiMeal } from "@/services/api";
 
 export const useMenuStore = defineStore("menu", {
   state: () => ({

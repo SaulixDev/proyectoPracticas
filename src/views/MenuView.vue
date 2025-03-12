@@ -16,10 +16,7 @@
         >
           ¿Buscas algo nuevo?
         </button>
-        <button
-          @click="() => getAllCat()"
-          class="focus:outline-2 focus:outline-offset-2 bg-primary100"
-        >
+        <button @click="() => getAllCat()" class="focus:outline-2 focus:outline-offset-2 bg-primary100">
           Categorias
         </button>
       </div>
@@ -68,6 +65,19 @@
         </div>
       </div>
     </div>
+
+    <div class="fixed bottom-7 right-6">
+            <button
+                class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2"
+                @click="() => scrollToTop()">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                </svg>
+            </button>
+        </div>
+
   </main>
 </template>
 
@@ -98,9 +108,19 @@ const {
   getRandomMeal,
 } = store;
 
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 const showCategories = () => {
   cats.value = !cats.value;
 };
+
+const addToFavorites = (id) => {
+    console.log(id)
+    getMealInfoById(id)
+}
 
 async function getAllCat() {
   store.meals = [];
