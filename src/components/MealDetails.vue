@@ -10,15 +10,21 @@
       alt=""
       class="w-[80%] object-contain md:w-[50%] 2xl:w-[60%] md:2-[]"
     />
-    <p class="pb-4 mt-3"><b>Category:</b> {{ meal.strCategory }}</p>
-    <p class="pb-4"><b>Zone:</b> {{ meal.strArea }}</p>
-    <p class="pb-4"><b>Instructions:</b> {{ meal.strInstructions }}</p>
+    <div class="md:grid grid-cols-2">
+      <div>
+        <p class="pb-4 mt-3"><b>Category:</b> {{ meal.strCategory }}</p>
+        <p class="pb-4"><b>Zone:</b> {{ meal.strArea }}</p>
+        <p class="pb-4"><b>Instructions:</b> {{ meal.strInstructions }}</p>
+      </div>
+      <div class="mt-8">
+        <RouterLink
+          class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3 "
+          to="/Menus"
+          >{{ $t(`message.info.less`) }}</RouterLink
+        >
+      </div>
+    </div>
     <p class="pb-4"><b>Tags:</b> {{ meal.strTags }}</p>
-    <RouterLink
-      class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3"
-      to="/Menus"
-      >{{ $t(`message.info.less`) }}</RouterLink
-    >
   </div>
   <div v-else>
     <p>Loading...</p>
