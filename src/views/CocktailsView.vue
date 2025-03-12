@@ -114,7 +114,6 @@ const { setCocktail, getDrinkInfoById } = store;
 //Métodos para la página
 const showNav = () => {
   showMore.value = !showMore.value;
-  console.log(showMore.value);
 };
 
 const showCategories = () => {
@@ -126,7 +125,6 @@ function scrollToTop() {
 }
 
 const addToFavorites = (id) => {
-    console.log(id)
     getDrinkInfoById(id)
 }
 
