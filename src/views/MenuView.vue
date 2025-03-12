@@ -22,7 +22,7 @@
       </div>
       <div
         v-if="cats"
-        class="bg-accent200 flex m-10 flex-col md:flex md:flex-col md:justify-center mb-0"
+        class=" flex m-10 flex-col md:flex md:flex-col md:ml-[40%] md:mr-[53%] mb-0 "
       >
         <button
           class="flex hover:bg-primary100"
@@ -47,7 +47,20 @@
         {{$t(`message.bttn.search`)}}
       </button>
     </div>
-    <div class="flex m-10 md:justify-center lg:justify-end">
+    <div class="bg-bg300 pl-8 mt-2 md:justify-center md:flex md:bg-bg100">
+      <input
+        type="text"
+        placeholder="Sopa de verduras"
+        v-model="menuName"
+        class="md:bg-bg200"
+      />
+      <button
+        @click="() => filtrar()"
+        class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 ml-29 md:bg-primary100"
+      >Filtrar
+     </button>
+    </div>
+    <div class="flex m-10 md:justify-center">
       <div class="">
         <div class="">
           <div class="flex flex-col gap-1" v-for="(meal, i) in meals">
@@ -56,42 +69,43 @@
               v-if="meal.strMealThumb"
               :src="meal.strMealThumb"
               alt=""
-              class="md:w-[50%]"
+              class="md:w-[50%] md:ml-[25%]"
             />
-            
-            <div>
+
+            <div class="md: ml-[25%]">
               <MenuInfo :data="meal?.data ? meal.data : meal" />
             </div>
           </div>
-          
         </div>
       </div>
     </div>
 
     <div class="fixed bottom-7 right-6">
-            <button
-                class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2"
-                @click="() => scrollToTop()">
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
-                </svg>
-            </button>
-        </div>
-
+      <button
+        class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2"
+        @click="() => scrollToTop()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+          />
+        </svg>
+      </button>
+    </div>
   </main>
 </template>
 
 <script setup>
 import MenuInfo from "@/components/menuInfo.vue";
-/*import {
-  getAllCategories,
-  getMealFromCategorie,
-  getMealFromId,
-  getRandomMeal,
-  getMealFromName,
-} from "@/services/meal.service";*/
 import { useMenuStore } from "@/stores/menuStores";
 import { computed, onMounted, ref } from "vue";
 const store = useMenuStore();
@@ -105,21 +119,21 @@ const menuName = ref("");
 const {
   getAllCategories,
   getMealFromCategorie,
-  getMealFromId,
   getMealFromName,
   getRandomMeal,
 } = store;
 
+function filtrar(){
+
+}
 
 function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 const showCategories = () => {
   cats.value = !cats.value;
 };
-
-
 
 async function getAllCat() {
   store.meals = [];
@@ -131,13 +145,6 @@ const showNav = () => {
   showMore.value = !showMore.value;
   console.log(showMore.value);
 };
-
-/*async function searchForMeal(id) {
-  store.meals = [];
-  store.categories = [];
-  await getMealFromId(id);
-  meals.value = store.meals;
-}*/
 
 async function searchForName() {
   store.meals = [];
@@ -159,9 +166,6 @@ async function getRandomMea() {
   categories.value = [];
   meals.value = await getRandomMeal();
 }
-/*onMounted(() => {
-   getAllCategories();
- });*/
 </script>
 
 <style scoped></style>
