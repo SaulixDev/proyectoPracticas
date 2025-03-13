@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import cockTailView from "../views/CocktailsView.vue"
-import menuView from "../views/MenuView.vu"
+import menuView from "../views/MenuView.vue"
 import menuIdView from "../components/MealDetails.vue"
 import favoritesView from "../views/Favorites.vue"
 const router = createRouter({
@@ -18,7 +18,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(cockTailView),
+      component: cockTailView,
     },
     {
       path: "/Menus",
@@ -26,12 +26,12 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(menuView),
+      component: menuView,
     },
     {
       path: "/Menus/:id",
       name: "meal-details",
-      component: () => import(menuIdView),
+      component: menuIdView,
       props: true,
     },
     {
@@ -40,7 +40,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(favoritesView),
+      component: favoritesView,
     },
   ],
 });
