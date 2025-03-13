@@ -122,7 +122,6 @@ const filteredMeals = computed(() => {
     meal.strMeal.toLowerCase().includes(menuFilter.value.toLowerCase())
   );
 });
-console.log(filteredMeals);
 
 const {
   getAllCategories,
@@ -143,7 +142,6 @@ async function getAllCat() {
 
 const showNav = () => {
   showMore.value = !showMore.value;
-  console.log(showMore.value);
 };
 
 async function searchForName() {
@@ -158,9 +156,7 @@ async function searchForCategorie(categorie) {
   store.categories = [];
   await getMealFromCategorie(categorie);
   meals.value = store.meals;
-  console.log(meals.value);
 }
-console.log(filteredMeals);
 
 async function getRandomMea() {
   meals.value = [];

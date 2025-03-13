@@ -9,7 +9,6 @@ export const useCocktailStore = defineStore('cocktail', {
     }),
     actions: {
         changeId(newId) {
-            console.log(newId)
             this.storeId = newId;
         },
 
@@ -27,7 +26,6 @@ export const useCocktailStore = defineStore('cocktail', {
                 const response = await apiCocktails.get(`/lookup.php?i=${id}`)
                 const [data] = response.data.drinks
                 this.favoriteDrinks.push(data)
-                console.log(this.favoriteDrinks)
             } catch (error) {
                 console.log("Error no se pudo recoger el cocktaikl", error)
                 return error;

@@ -44,7 +44,6 @@ export async function getRandomMeal() {
 export async function getMealFromCategorie(categorie) {
   try {
     let response = await apiMeal.get(`/filter.php?c=${categorie}`);
-    console.log(response.data.meals);
     return response.data.meals;
   } catch (error) {
     console.error("Error al obtener la comida: ", error);

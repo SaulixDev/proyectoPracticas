@@ -14,7 +14,6 @@ export const useMenuStore = defineStore("menu", {
   }),
   actions: {
     changeId(newId) {
-      console.log(newId);
       this.storeId = newId;
     },
 
