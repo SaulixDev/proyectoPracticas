@@ -31,6 +31,9 @@ const i18n = createI18n({
             input: {
                 search: 'Search cocktail',
             },
+            home: {
+                slang: 'Quality Meals & Cocktails',
+            },
         },
       },
       esp: {
@@ -57,6 +60,9 @@ const i18n = createI18n({
             },
             input: {
                 search: 'Buscar cocktail',
+            },
+            home: {
+                slang: 'Comida y cóckteles de calidad',
             },
         },
       },
