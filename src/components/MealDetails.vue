@@ -1,16 +1,30 @@
 <template>
-  <div v-if="meal">
-    <h1 class="text-center font-bold">{{ meal.strMeal }}</h1>
-    <img :src="meal.strMealThumb" alt="" />
-    <p>Category: {{ meal.strCategory }}</p>
-    <p>Zone: {{ meal.strArea }}</p>
-    <p>Instructions: {{ meal.strInstructions }}</p>
-    <p>Tags: {{ meal.strTags }}</p>
-    <RouterLink
-      class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3"
-      to="/Menus"
-      >{{ $t(`message.info.less`) }}</RouterLink
+  <div v-if="meal" class="m-2 p-2 rounded-lg bg-bg200 md:text-lg dark:bg-dbg200">
+    <h1
+      class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl"
     >
+      {{ meal.strMeal }}
+    </h1>
+    <img
+      :src="meal.strMealThumb"
+      alt=""
+      class="w-[80%] object-contain md:w-[50%] 2xl:w-[60%] md:2-[]"
+    />
+    <div class="md:grid grid-cols-2">
+      <div>
+        <p class="pb-4 mt-3"><b>Category:</b> {{ meal.strCategory }}</p>
+        <p class="pb-4"><b>Zone:</b> {{ meal.strArea }}</p>
+        <p class="pb-4"><b>Instructions:</b> {{ meal.strInstructions }}</p>
+      </div>
+      <div class="mt-8">
+        <RouterLink
+          class="bg-primary100 active:bg-accent100 ml-29 mr-25 mt-1 mb-3 dark:bg-dbg100 dark:hover:bg-dbg300"
+          to="/Menus"
+          >{{ $t(`message.info.less`) }}</RouterLink
+        >
+      </div>
+    </div>
+    <p class="pb-4"><b>Tags:</b> {{ meal.strTags }}</p>
   </div>
   <div v-else>
     <p>Loading...</p>

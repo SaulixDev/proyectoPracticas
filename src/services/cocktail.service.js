@@ -15,7 +15,6 @@ export async function getCocktailByName(name) {
 export async function getRandomCocktail() {
   try {
     const response = await apiCocktails.get(`/random.php`);
-    console.log(response);
     return response.data.drinks;
   } catch (error) {
     console.log("Error no se ha podido recoger el Cocktel", error);
