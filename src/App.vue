@@ -72,7 +72,7 @@ const changeTheme = () => {
   const theme = document.documentElement.classList;
   if (theme.contains("dark")) {
     theme.remove("dark");  // Cambia a tema claro
-    localStorage.setItem("theme", "light");
+
   } else {
     theme.add("dark");     // Cambia a tema oscuro
     localStorage.setItem("theme", "dark");
