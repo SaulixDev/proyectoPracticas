@@ -21,12 +21,6 @@ const router = createRouter({
       component: cockTailView,
     },
     {
-      path: "/cocktails/:category",
-      name: "cocktaillist",
-      component: () => import("../components/CocktailList.vue"),
-      props: true,
-    },
-    {
       path: "/Menus",
       name: "menus",
       // route level code-splitting
