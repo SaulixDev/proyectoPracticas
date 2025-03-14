@@ -136,11 +136,15 @@ const verCocktailAleatorio = async () => {
 };
 
 const getDrinkAlcoholic = async () => {
-    cocktailList.value = await getAlcoholic();
+  cocktailList.value = await getAlcoholic();
+  scrollToTop()
+  showCategories()
 };
 
 const getDrinkNonAlcoholic = async () => {
-    cocktailList.value = await getNonAlcoholic();
+  cocktailList.value = await getNonAlcoholic();
+  scrollToTop()
+  showCategories()
 };
 
 const getDrinkFromId = async (id) => {
@@ -158,6 +162,7 @@ const getAllCat = async () => {
 
 const getDrinksFromCategorie = async (name) => {
     cocktailList.value = await getCategorie(name);
+    showCategories()
     scrollToTop()
 }
 

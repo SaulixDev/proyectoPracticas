@@ -82,7 +82,7 @@
 
     <div class="fixed bottom-7 z-30 right-6">
       <button
-        class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2"
+        class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2 dark:bg-dbg100 dark:border-black dark:hover:bg-dbg100"
         @click="() => scrollToTop()"
       >
         <svg
@@ -122,7 +122,6 @@ const filteredMeals = computed(() => {
     meal.strMeal.toLowerCase().includes(menuFilter.value.toLowerCase())
   );
 });
-console.log(filteredMeals);
 
 const {
   getAllCategories,
@@ -135,6 +134,11 @@ const showCategories = () => {
   cats.value = !cats.value;
 };
 
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
 async function getAllCat() {
   store.meals = [];
   await getAllCategories();
@@ -143,7 +147,6 @@ async function getAllCat() {
 
 const showNav = () => {
   showMore.value = !showMore.value;
-  console.log(showMore.value);
 };
 
 async function searchForName() {
@@ -158,9 +161,7 @@ async function searchForCategorie(categorie) {
   store.categories = [];
   await getMealFromCategorie(categorie);
   meals.value = store.meals;
-  console.log(meals.value);
 }
-console.log(filteredMeals);
 
 async function getRandomMea() {
   meals.value = [];

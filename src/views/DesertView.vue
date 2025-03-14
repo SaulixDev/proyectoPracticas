@@ -3,6 +3,6 @@
 
 <script setup></script>
 
-</script>
 
-<style scoped>
+
+<style scoped></style>
