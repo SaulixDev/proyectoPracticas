@@ -4,9 +4,9 @@
         <nav class="p-1 bg-bg200 border-b-2 border-text100 sticky top-0 dark:bg-dbg200 dark:border-black">
             <!-- Navegador -->
             <div :class="`flex flex-col md:flex-row md:justify-evenly md:items-center md:flex`">
-                <button class="hidden md:flex m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300" @click="() => goBack()">
+                <button class=" m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300" @click="() => goBack()">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
+                        stroke="currentColor" class="w-[100%] size-6 text-center">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
                     </svg>
@@ -45,11 +45,12 @@
         <!-- Lista de categorías en la propia página -->
         <div class="text-center" v-if="showCatPage">
             <h1 class="pb-3 text-4xl font-extrabold border-b-2">Categorías</h1>
-            <div class="p-7 grid grid-cols-2 gap-10">
+            <div class="p-7 grid grid-cols-2 md:grid-cols-3 gap-5 place-items-center">
                 <div @click="() => getDrinksFromCategorie(cat.strCategory, 'page')"
-                    class="p-10 hover:bg-bg200 dark:hover:bg-dbghover100 duration-100 border-1 rounded-2xl"
+                    class="md:w-[60%] hover:bg-bg200 dark:hover:bg-dbghover100 duration-100 border-1 rounded-2xl"
                     v-for="(cat, i) in cocktailCat" :key="i">
-                    <p>{{ cat.strCategory }}</p>
+                    <img :src=" imgArray[i] " alt=""/>
+                    <p class="pt-6 p-2">{{ cat.strCategory }}</p>
                 </div>
             </div>
         </div>
@@ -112,6 +113,20 @@ import CocktailInfo from "@/components/CocktailInfo.vue";
 const cocktailList = ref([]);
 const cocktailData = ref([]);
 const cocktailCat = ref([]);
+/* const imgArray = ref(['1', '2', '3','4', '5', '6', '7', '8', '9', '10', '11']) */
+const imgArray = ref([
+    "https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg",
+    'https://www.thecocktaildb.com/images/media/drink/rrtssw1472668972.jpg',
+    "https://www.thecocktaildb.com/images/media/drink/tpxurs1454513016.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/rvwrvv1468877323.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/tqxyxx1472719737.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/3nbu4a1487603196.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/yyrwty1468877498.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/vyrurp1472667777.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/uxxtrt1472667197.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/xxyywq1454511117.jpg",
+    "https://www.thecocktaildb.com/images/media/drink/qxrvqw1472718959.jpg",
+])
 
 const newName = ref('');
 const searchWord = ref('');
