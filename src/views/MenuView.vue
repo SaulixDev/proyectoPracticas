@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-
+    </section>
     <ScrollToTopButton/>
   </main>
 </template>
@@ -111,7 +111,7 @@
 <script setup>
 import MenuInfo from "@/components/menuInfo.vue";
 import { useMenuStore } from "@/stores/menuStores";
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import ScrollToTopButton from "@/components/ScrollToTopButton.vue";
 const store = useMenuStore();
 const meals = computed(() => store.meals);
