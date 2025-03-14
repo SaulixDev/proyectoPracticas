@@ -18,6 +18,12 @@ const router = createRouter({
       component: () => import("../views/CocktailsView.vue"),
     },
     {
+      path: "/cocktails/:category",
+      name: "cocktaillist",
+      component: () => import("../components/CocktailList.vue"),
+      props: true,
+    },
+    {
       path: "/Menus",
       name: "menus",
       // route level code-splitting
