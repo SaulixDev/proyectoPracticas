@@ -1,7 +1,7 @@
 <template>
   <main class="bg-bg100 p-4 static dark:bg-dbg100">
     <section
-      class="flex flex-col sticky top-0 justify-left pb-1 bg-bg100 md:relative dark:bg-dbg200 dark:border-black"
+      class="flex flex-col sticky top-0 justify-left pb-1 bg-bg100 md:relative dark:bg-dbg100 dark:border-black"
     >
       <div
         class="m-1 p-2 bg-bg300 flex justify-center dark:bg-dbg200 rounded-full"
@@ -33,18 +33,16 @@
         />
       </div>
       <div
+        @click="() => getRandomMea()"
         class="mt-3 mb-4 p-4 bg-bg300 flex justify-center dark:bg-dbg200 rounded-full gap-5"
       >
         <div>
-          <button
-            @click="() => getRandomMea()"
-            class="dark:hover:bg-dbg300 dark:bg-dbg100 text-xl"
-          >
+          <button class="dark:bg-dbg200 text-xl">
             ¡RECETA AL AZAR!
           </button>
         </div>
         <div class="bg">
-          <button @click="() => getRandomMea()">
+          <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -62,22 +60,8 @@
           </button>
         </div>
       </div>
-      <h1
-       class="text-2xl m-2"
-       v-if="cats"
-      >Categorías de Recetas</h1>
     </section>
-    <section>
-      <div class="grid grid-cols-2">
-        <div
-          v-if="cats"
-          v-for="(cate, i) in categories"
-          @click="() => searchForCategorie(cate.strCategory)"
-          class="m-3 text-xl border-1 p-3 flex justify-center rounded-full"
-        >
-          {{ cate.strCategory }}
-        </div>
-      </div>
+    <section class="md:grid md:grid-cols-2">
       <div
         class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200"
         v-for="(meal, i) in filteredMeals"
@@ -89,13 +73,13 @@
             {{ meal.strMeal }}
           </h1>
         </div>
-        <div class="grid grid-cols-2">
-          <div class="md:border-r-2 md:border-bg300">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="place-items-center">
             <img
               v-if="meal.strMealThumb"
               :src="meal.strMealThumb"
               alt=""
-              class="w-[80%] object-contain md:w-[50%] 2xl:w-[67%]"
+              class="w-[80%] object-contain md:w-[50%] 2xl:w-[67%] "
             />
           </div>
           <div class="">
@@ -103,8 +87,24 @@
           </div>
         </div>
       </div>
+      <button class="text-2xl m-2" @click="() => getAllCat()">
+        Categorías de Recetas
+      </button>
+      <div class="grid grid-cols-2 md:grid-cols-3">
+        <div
+          v-for="(cate, i) in categories"
+          @click="() => searchForCategorie(cate.strCategory)"
+          class="m-3 text-xl border-1 p-3 flex justify-center rounded-3xl flex-col bg-bg300 dark:bg-dbg300"
+        >
+          <img :src="images[i]" alt=""/>
+          <p class="flex justify-center mt-1 bg-bg200 dark:bg-primary200">
+            {{ cate.strCategory }}
+          </p>
+        </div>
+      </div>
+      <div></div>
     </section>
-    <ScrollToTopButton/>
+    <ScrollToTopButton />
   </main>
 </template>
 
@@ -118,9 +118,25 @@ const meals = computed(() => store.meals);
 const categories = computed(() => store.categories);
 const { setMenu } = store;
 const showMore = ref(true);
-const cats = ref(true);
 const menuName = ref("");
 const menuFilter = ref("");
+const cats = ref(true);
+const images = ref([
+  "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+  "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
+  "https://www.themealdb.com/images/media/meals/vdwloy1713225718.jpg",
+  "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
+  "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
+  "https://www.themealdb.com/images/media/meals/sxysrt1468240488.jpg",
+  "https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg",
+  "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
+  "https://www.themealdb.com/images/media/meals/xusqvw1511638311.jpg",
+  "https://www.themealdb.com/images/media/meals/1548772327.jpg",
+  "https://www.themealdb.com/images/media/meals/0206h11699013358.jpg",
+  "https://www.themealdb.com/images/media/meals/tvvxpv1511191952.jpg",
+  "https://www.themealdb.com/images/media/meals/1520081754.jpg",
+  "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg",
+]);
 
 const filteredMeals = computed(() => {
   return meals.value.filter((meal) =>
@@ -135,15 +151,11 @@ const {
   getRandomMeal,
 } = store;
 
-const showCategories = () => {
-  cats.value = !cats.value;
-};
-
 async function getAllCat() {
   store.meals = [];
+  filteredMeals.value = [];
   await getAllCategories();
-  showCategories();
-  cats.value = !cats.value;
+  categories.value = store.categories;
 }
 
 const showNav = () => {
@@ -162,7 +174,6 @@ async function searchForCategorie(categorie) {
   store.categories = [];
   await getMealFromCategorie(categorie);
   meals.value = store.meals;
-  cats.value = !cats.value;
 }
 
 async function getRandomMea() {
@@ -172,6 +183,7 @@ async function getRandomMea() {
 }
 onMounted(() => {
   getAllCat();
+  getRandomMeal();
 });
 </script>
 

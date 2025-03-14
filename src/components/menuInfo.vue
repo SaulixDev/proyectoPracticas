@@ -1,13 +1,13 @@
 <template>
-  <div class="grid grid-row">
+  <div class="grid grid-row place-items-center md:p-6 md:gap-5">
     <button
       @click="() => moreInfo()"
-      class="bg-primary100 active:bg-accent100 mx-12 my-3 md:mx-[41%] lg:mx-[43%] dark:bg-dbg100 dark:hover:bg-dbg300"
+      class="bg-primary100 active:bg-accent100 mt-2 w-[20%] dark:bg-dbg100 dark:hover:bg-dbg300 "
     >
       {{$t(`message.info.more`)}}
     </button>
     <button
-      class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 mx-20 my-2 md:mx-[50%] lg:mx-[51%] dark:bg-dbg100 dark:hover:bg-dbg300"
+      class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
       @click="() => addToFavorites(data.idMeal)"
     >
       <svg
