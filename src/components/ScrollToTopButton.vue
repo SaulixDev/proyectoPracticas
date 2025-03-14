@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed z-30 bottom-7 right-6">
+    <div class="collapse md:visible fixed z-30 bottom-7 right-6">
             <button
                 class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2 dark:bg-dbg100 dark:border-black dark:hover:bg-dbg100"
                 @click="() => scrollToTop()">

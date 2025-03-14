@@ -17,7 +17,7 @@ const i18n = createI18n({
                 lang: '🇪🇸',
             },
             nav: {
-                food: 'Meal',
+                food: 'Meals',
                 fav: 'Favorites',
             },
             fav: {
@@ -47,7 +47,7 @@ const i18n = createI18n({
                 lang: '🇬🇧',
             },
             nav: {
-                food: 'Comida',
+                food: 'Comidas',
                 fav: 'Favoritos',
             },
             fav: {
