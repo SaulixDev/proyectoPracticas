@@ -12,19 +12,21 @@
             <!-- Navegador -->
             <div :class="`flex flex-col md:flex-row md:justify-evenly md:items-center 
                     ${showMore ? 'block' : 'hidden'} md:flex`">
-                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
+                <button
+                    class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                     @click="() => verCocktailAleatorio()">{{ $t(`message.bttn.new`) }}</button>
-                <button class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
+                <button
+                    class="m-1 p-1 bg-primary100 rounded-md hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                     @click="() => showCategories()">{{ $t(`message.bttn.cat`) }}</button>
                 <!-- Categorías, flex para móviles, absolute para ordenadores -->
                 <span
                     class="p-2 rounded-b-lg bg-accent200 text-text100 flex flex-col md:absolute top-[100%] right-[25%] dark:bg-daccent200"
                     v-if="showCat">
                     <div @click="() => getDrinkAlcoholic()" class="hover:bg-primary200 duration-100 border-b-1">
-                        > {{$t(`message.bttn.noAlc`)}}
+                        > {{ $t(`message.bttn.noAlc`) }}
                     </div>
                     <div @click="() => getDrinkNonAlcoholic()" class="hover:bg-primary200 duration-100">
-                        > {{$t(`message.bttn.noAlc`)}}
+                        > {{ $t(`message.bttn.noAlc`) }}
                     </div>
                     <div @click="() => getDrinksFromCategorie(cat.strCategory)"
                         class="hover:bg-primary200 duration-100 border-t-1" v-for="(cat, i) in cocktailCat" :key="i">
@@ -37,12 +39,13 @@
         <!-- Input para buscar por nombre -->
         <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center dark:bg-dbg200">
             <input :class="`m-2 w-[80%] border-r-1 border-text200`" type="text" v-model="searchWord"
-            placeholder="Buscar Bebida" />
-            <button @click="() => searchCocktailByName(searchWord)">{{$t(`message.bttn.search`)}}</button>
+                placeholder="Buscar Bebida" />
+            <button @click="() => searchCocktailByName(searchWord)">{{ $t(`message.bttn.search`) }}</button>
         </div>
-        
+
         <div class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200" v-for="(cocktail, i) in filterList" :key="i">
-            <h1 class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl dark:border-black">
+            <h1
+                class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl dark:border-black">
                 {{ cocktail.strDrink }}<!--  - Id: {{ cocktail.idDrink }} --></h1>
             <div class="flex flex-col md:flex-row w-ful gap-4">
                 <div class="p-3 w-full flex justify-center md:border-r-2 md:border-bg300 md:w-1/2 md:dark:border-black">
@@ -51,11 +54,14 @@
                 </div>
                 <div class="px-12 p-4 w-full md:w-1/2">
                     <div class="mb-3 flex justify-center">
-                        <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
+                        <button
+                            class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                             @click="() => getDrinkFromId(cocktail.idDrink)">{{ $t(`message.info.more`) }}</button>
-                        <button class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
+                        <button
+                            class="mr-5 bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                             @click="() => lessInfo()">{{ $t(`message.info.less`) }}</button>
-                        <button class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
+                        <button
+                            class="bg-primary100 rounded-md p-1 hover:bg-primary200 duration-300 dark:bg-dbg100 dark:hover:bg-dbg300"
                             @click="() => addToFavorites(cocktail.idDrink)">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
@@ -69,31 +75,24 @@
             </div>
         </div>
 
-        <div class="fixed z-30 bottom-7 right-6">
-            <button
-                class="mr-5 bg-primary100 rounded-md p-1 border-2 border-text100 hover:bg-primary200 duration-300 transition transition-discrete hover:-translate-y-2 dark:bg-dbg100 dark:border-black dark:hover:bg-dbg100"
-                @click="() => scrollToTop()">
+        <ScrollToTopButton />
 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
-                </svg>
-            </button>
-        </div>
+
     </main>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import {
-  getCocktailByName,
-  getAlcoholic,
-  getNonAlcoholic,
-  getRandomCocktail,
-  getInfoById,
-  getAllCategoria,
-  getCategorie,
+    getCocktailByName,
+    getAlcoholic,
+    getNonAlcoholic,
+    getRandomCocktail,
+    getInfoById,
+    getAllCategoria,
+    getCategorie,
 } from "@/services/cocktail.service";
+import ScrollToTopButton from "@/components/ScrollToTopButton.vue";
 import { useCocktailStore } from "@/stores/cocktailStore";
 import CocktailInfo from "@/components/CocktailInfo.vue";
 
@@ -106,9 +105,9 @@ const newName = ref('');
 const searchWord = ref('');
 
 const filterList = computed(() => {
-  return (cocktailList.value || []).filter(cocktail =>
-    String(cocktail.strDrink).toLowerCase().includes((searchWord.value || '').toLowerCase())
-  );
+    return (cocktailList.value || []).filter(cocktail =>
+        String(cocktail.strDrink).toLowerCase().includes((searchWord.value || '').toLowerCase())
+    );
 });
 
 const showCat = ref(false);
@@ -120,15 +119,11 @@ const { setCocktail, getDrinkInfoById } = store;
 
 //Métodos para la página
 const showNav = () => {
-  showMore.value = !showMore.value;
+    showMore.value = !showMore.value;
 };
 
 const showCategories = () => {
     showCat.value = !showCat.value;
-}
-
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 const addToFavorites = (id) => {
@@ -137,28 +132,28 @@ const addToFavorites = (id) => {
 
 //métodos del service de la api
 const verCocktailAleatorio = async () => {
-  cocktailList.value = await getRandomCocktail();
+    cocktailList.value = await getRandomCocktail();
 };
 
 const getDrinkAlcoholic = async () => {
-  cocktailList.value = await getAlcoholic();
+    cocktailList.value = await getAlcoholic();
 };
 
 const getDrinkNonAlcoholic = async () => {
-  cocktailList.value = await getNonAlcoholic();
+    cocktailList.value = await getNonAlcoholic();
 };
 
 const getDrinkFromId = async (id) => {
-  cocktailData.value = await getInfoById(id);
-  setCocktail(cocktailData.value);
+    cocktailData.value = await getInfoById(id);
+    setCocktail(cocktailData.value);
 };
 
 const searchCocktailByName = async (name) => {
-  cocktailList.value = await getCocktailByName(name);
+    cocktailList.value = await getCocktailByName(name);
 };
 
 const getAllCat = async () => {
-  cocktailCat.value = await getAllCategoria();
+    cocktailCat.value = await getAllCategoria();
 };
 
 const getDrinksFromCategorie = async (name) => {
@@ -167,17 +162,16 @@ const getDrinksFromCategorie = async (name) => {
 }
 
 onMounted(() => {
-  getAllCat();
+    getAllCat();
 });
 
 async function lessInfo() {
-  setCocktail([]);
+    setCocktail([]);
 }
 </script>
 
 <style scoped>
 img {
-  border-radius: 20px;
+    border-radius: 20px;
 }
-
 </style>
