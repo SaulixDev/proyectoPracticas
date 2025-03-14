@@ -17,7 +17,7 @@ const i18n = createI18n({
                 lang: '🇪🇸',
             },
             nav: {
-                food: 'Meal',
+                food: 'Meals',
                 fav: 'Favorites',
             },
             fav: {
@@ -30,6 +30,9 @@ const i18n = createI18n({
             },
             input: {
                 search: 'Search cocktail',
+            },
+            home: {
+                slang: 'Quality Meals & Cocktails',
             },
         },
       },
@@ -44,7 +47,7 @@ const i18n = createI18n({
                 lang: '🇬🇧',
             },
             nav: {
-                food: 'Comida',
+                food: 'Comidas',
                 fav: 'Favoritos',
             },
             fav: {
@@ -57,6 +60,9 @@ const i18n = createI18n({
             },
             input: {
                 search: 'Buscar cocktail',
+            },
+            home: {
+                slang: 'Comida y cóckteles de calidad',
             },
         },
       },
