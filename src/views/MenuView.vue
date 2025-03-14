@@ -1,84 +1,108 @@
 <template>
   <main class="bg-bg100 p-4 static dark:bg-dbg100">
-    <div
-      class="flex flex-col sticky top-0 justify-left pb-1 bg-bg100 border-b-2 border-text100 md:relative dark:bg-dbg200 dark:border-black"
+    <section
+      class="flex flex-col sticky top-0 justify-left pb-1 bg-bg100 md:relative dark:bg-dbg200 dark:border-black"
     >
-      <div>
+      <div
+        class="m-1 p-2 bg-bg300 flex justify-center dark:bg-dbg200 rounded-full"
+      >
         <button
-          @click="() => showNav()"
-          class="m-[10px] p-2 rounded bg-text100 text-white md:hidden"
+          @click="() => searchForName()"
+          class="md:bg-primary100 md:dark:bg-dbg200"
         >
-          ☰
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
         </button>
+        <input
+          type="text"
+          placeholder="Buscar recetas..."
+          v-model="menuFilter"
+          class="m-2 w-[80%] border-text200 text-black dark:text-white"
+        />
       </div>
       <div
-        v-if="showMore"
-        class="flex flex-col gap-1 mx-15 md:flex-row md:justify-evenly md:items-center flex md:bg-bg100 md:gap-5 md:dark:bg-dbg200"
+        class="mt-3 mb-4 p-4 bg-bg300 flex justify-center dark:bg-dbg200 rounded-full gap-5"
       >
-        <button
-          @click="() => getRandomMea()"
-          class="focus:outline-2 focus:outline-offset-2 bg-primary100 dark:hover:bg-dbg300 dark:bg-dbg100"
-        >
-          {{ $t(`message.bttn.new`) }}
-        </button>
-        <button
-          @click="() => getAllCat()"
-          class="focus:outline-2 focus:outline-offset-2 bg-primary100 dark:hover:bg-dbg300 dark:bg-dbg100"
-        >
-          {{ $t(`message.bttn.cat`) }}
-        </button>
+        <div>
+          <button
+            @click="() => getRandomMea()"
+            class="dark:hover:bg-dbg300 dark:bg-dbg100 text-xl"
+          >
+            ¡RECETA AL AZAR!
+          </button>
+        </div>
+        <div class="bg">
+          <button @click="() => getRandomMea()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-      <div
-        v-if="cats"
-        class="flex m-10 flex-col md:flex md:flex-col md:ml-[40%] md:mr-[53%] mb-0 dark:bg-daccent200"
-      >
-        <button
-          class="flex hover:bg-primary100"
-          v-for="(category, i) in categories"
-          @click="() => searchForCategorie(category.strCategory)"
-        >
-          > {{ category.strCategory }}
-        </button>
-      </div>
-    </div>
-    <div class="m-4 p-2 rounded-md bg-bg300 flex justify-center dark:bg-dbg200">
-      <input
-        type="text"
-        placeholder="Sopa de verduras"
-        v-model="menuFilter"
-        class="m-2 w-[80%] border-r-1 border-text200"
-      />
-      <button
-        @click="() => searchForName()"
-        class="focus:outline-2 focus:outline-offset-2 focus:outline-text100 active:bg-accent100 md:bg-primary100 md:dark:bg-dbg200"
-      >
-        {{ $t(`message.bttn.search`) }}
-      </button>
-    </div>
-
-    <div
-      class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200"
-      v-for="(meal, i) in filteredMeals"
-    >
       <h1
-        class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl"
-      >
-        {{ meal.strMeal }}
-      </h1>
+       class="text-2xl m-2"
+       v-if="cats"
+      >Categorías de Recetas</h1>
+    </section>
+    <section>
       <div class="grid grid-cols-2">
-        <div class="md:border-r-2 md:border-bg300">
-          <img
-            v-if="meal.strMealThumb"
-            :src="meal.strMealThumb"
-            alt=""
-            class="w-[80%] object-contain md:w-[50%] 2xl:w-[67%]"
-          />
-        </div>
-        <div class="">
-          <MenuInfo :data="meal?.data ? meal.data : meal" />
+        <div
+          v-if="cats"
+          v-for="(cate, i) in categories"
+          @click="() => searchForCategorie(cate.strCategory)"
+          class="m-3 text-xl border-1 p-3 flex justify-center rounded-full"
+        >
+          {{ cate.strCategory }}
         </div>
       </div>
-    </div>
+      <div
+        class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200"
+        v-for="(meal, i) in filteredMeals"
+      >
+        <div>
+          <h1
+            class="mb-2 text-center text-2xl font-bold font-title border-b-2 border-bg300 xl:text-4xl"
+          >
+            {{ meal.strMeal }}
+          </h1>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="md:border-r-2 md:border-bg300">
+            <img
+              v-if="meal.strMealThumb"
+              :src="meal.strMealThumb"
+              alt=""
+              class="w-[80%] object-contain md:w-[50%] 2xl:w-[67%]"
+            />
+          </div>
+          <div class="">
+            <MenuInfo :data="meal?.data ? meal.data : meal" />
+          </div>
+        </div>
+      </div>
 
     <ScrollToTopButton/>
   </main>
@@ -94,7 +118,7 @@ const meals = computed(() => store.meals);
 const categories = computed(() => store.categories);
 const { setMenu } = store;
 const showMore = ref(true);
-const cats = ref(false);
+const cats = ref(true);
 const menuName = ref("");
 const menuFilter = ref("");
 
@@ -119,6 +143,7 @@ async function getAllCat() {
   store.meals = [];
   await getAllCategories();
   showCategories();
+  cats.value = !cats.value;
 }
 
 const showNav = () => {
@@ -137,6 +162,7 @@ async function searchForCategorie(categorie) {
   store.categories = [];
   await getMealFromCategorie(categorie);
   meals.value = store.meals;
+  cats.value = !cats.value;
 }
 
 async function getRandomMea() {
@@ -144,6 +170,9 @@ async function getRandomMea() {
   categories.value = [];
   meals.value = await getRandomMeal();
 }
+onMounted(() => {
+  getAllCat();
+});
 </script>
 
 <style scoped></style>
