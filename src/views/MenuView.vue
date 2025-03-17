@@ -8,7 +8,7 @@
       >
         <button
           @click="() => searchForName()"
-          class="md:bg-primary100 md:dark:bg-dbg200"
+          class=""
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,9 +37,7 @@
         class="mt-3 mb-4 p-4 bg-bg300 flex justify-center dark:bg-dbg200 rounded-full gap-5"
       >
         <div>
-          <button class="dark:bg-dbg200 text-xl">
-            ¡RECETA AL AZAR!
-          </button>
+          <button class="dark:bg-dbg200 text-xl">¡RECETA AL AZAR!</button>
         </div>
         <div class="bg">
           <button>
@@ -61,7 +59,7 @@
         </div>
       </div>
     </section>
-    <section class="md:grid md:grid-cols-2">
+    <section class="">
       <div
         class="m-2 p-2 rounded-lg bg-bg200 dark:bg-dbg200"
         v-for="(meal, i) in filteredMeals"
@@ -79,7 +77,7 @@
               v-if="meal.strMealThumb"
               :src="meal.strMealThumb"
               alt=""
-              class="w-[80%] object-contain md:w-[50%] 2xl:w-[67%] "
+              class="w-[80%] object-contain md:w-[50%] 2xl:w-[67%]"
             />
           </div>
           <div class="">
@@ -94,10 +92,10 @@
         <div
           v-for="(cate, i) in categories"
           @click="() => searchForCategorie(cate.strCategory)"
-          class="m-3 text-xl border-1 p-3 flex justify-center rounded-3xl flex-col bg-bg300 dark:bg-dbg300"
+          class="m-3 text-xl border-1 flex justify-center rounded-3xl flex-col "
         >
-          <img :src="images[i]" alt=""/>
-          <p class="flex justify-center mt-1 bg-bg200 dark:bg-primary200">
+          <img :src="images[i]" alt=""  class="rounded-3xl"/>
+          <p class="flex justify-center mt-1 ">
             {{ cate.strCategory }}
           </p>
         </div>
@@ -117,10 +115,7 @@ const store = useMenuStore();
 const meals = computed(() => store.meals);
 const categories = computed(() => store.categories);
 const { setMenu } = store;
-const showMore = ref(true);
-const menuName = ref("");
 const menuFilter = ref("");
-const cats = ref(true);
 const images = ref([
   "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
   "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
@@ -158,9 +153,6 @@ async function getAllCat() {
   categories.value = store.categories;
 }
 
-const showNav = () => {
-  showMore.value = !showMore.value;
-};
 
 async function searchForName() {
   store.meals = [];
@@ -168,6 +160,7 @@ async function searchForName() {
   await getMealFromName(menuFilter.value);
   meals.value = store.meals;
 }
+
 
 async function searchForCategorie(categorie) {
   store.meals = [];

@@ -1,5 +1,5 @@
 <template>
-    <main class="static">
+    <main class="static h-screen">
         <!-- Cocktail -->
         <h1 class="text-center text-3xl font-title border-b-1 border-primary200">Cocktails</h1>
         <div class="mx-20 my-10 grid md:grid-cols-2 gap-4">

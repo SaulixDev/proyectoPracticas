@@ -43,7 +43,7 @@
     </main>
 
     <footer
-      class="collapse p-5 z-10 text-center flex justify-evenly bg-bg300 w-full fixed bottom-0 md:visible dark:bg-dbg300 dark:text-dtext100">
+      class="collapse p-5 z-10 text-center flex justify-evenly bg-bg300 w-full md:visible dark:bg-dbg300 dark:text-dtext100">
       <div class="w-[30%] border-r-1">
         <p>Telf:34522345</p>
       </div>
